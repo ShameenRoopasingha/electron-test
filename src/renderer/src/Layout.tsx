@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react'
 import Navbar from './components/Navbar'
 import SearchBox from './components/SearchBox'
-import { useAppSelector } from './redux/hooks'
+// import { useAppSelector } from './redux/hooks'
 import Container from './components/Container'
 
 interface LayoutProps {
@@ -13,19 +13,28 @@ const Layout: FC<LayoutProps> = ({ children, classNames }) => {
   const [active, setActive] = useState('SALES')
 
   return (
-    <div className="flex h-screen bg-black">
+    <div className="flex w-screen h-screen bg-black overflow-hidden">
       {/* Sidebar */}
       <Navbar active={active} onSelect={setActive} />
 
       {/* Main content */}
-      <main
-        className={`${classNames ? classNames : ''} flex-1 p-6 flex-col text-white overflow-y-auto`}
-      >
-        <div className="w-[80.9vw] group">
-          <SearchBox classNames="">{active}</SearchBox>
-          <Container classNames="group-width">{children}</Container>
-        </div>
+      <main className={`${classNames ?? ''} p-5 h-full w-full flex flex-1`}>
+        <div className="group w-full h-full w-full  flex flex-col  content-center items-center gap-5">
+          <SearchBox
+            classNames="
+        transition-all h-fit w-full flex-1
+      "
+          >
+            {active}
+          </SearchBox>
 
+          <Container
+            classNames=" p-5 h- fit w-full flex-14
+      "
+          >
+            {children}
+          </Container>
+        </div>
       </main>
     </div>
   )

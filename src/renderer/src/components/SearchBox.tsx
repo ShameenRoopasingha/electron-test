@@ -16,14 +16,14 @@ interface SearchBoxProps2 {
 const Search: FC<SearchBoxProps2> = () => {
   return (
     <>
-      <div className="bg-[#2C2C2C] rounded-full flex content-center align-middle items-center gap-2 p-2.5 w-[40vw] shrink-0 ">
-        <div className="size-[35px] center rounded-full bg-black align-middle content-center justify-center flex items-center">
+      <div className="bg-[#2C2C2C] rounded-full  items-center  gap-2 p-2.5 w-full  ">
+        <div className="size-[35px] rounded-full bg-black justify-center item-center flex items-center">
           <img src={SearchIcon} alt="" srcSet="" className="size-[20px]  flex-none " />
         </div>
         <input
           type="text"
           placeholder="Search Items..."
-          className="bg-none text-[#E0E0E0] rounded-md  w-full outline-none flex-1 "
+          className="bg-transparent text-[#E0E0E0] w-full outline-none text-sm sm:text-base "
         />
       </div>
     </>
@@ -33,18 +33,20 @@ const Search: FC<SearchBoxProps2> = () => {
 const SearchBox: FC<SearchBoxProps1> = ({ classNames, children }) => {
   return (
     <div
-      className={`${classNames ?? ''} grid grid-cols-3 items-center bg-[#161616] rounded-2xl py-2.5`}
+      className={`${classNames ?? ''} flex items-center justify-between gap-4 
+      bg-[#161616] rounded-2xl py-2.5 px-4 
+      flex-wrap md:flex-nowrap transition-all duration-500`}
     >
       {/* Left: Active */}
-      <h1 className="px-5 justify-self-start">{children}</h1>
+      <h1 className="text-white font-extrabold text-3xl flex-shrink-0 px-2">{children}</h1>
 
       {/* Center: Search */}
-      <div className="justify-self-center w-[800px] ">
-        <Search classNames="" />
+      <div className="flex justify-center items-center w-full md:max-w-[800px] flex-1 order-3 md:order-2">
+        <Search classNames="flex content-center align-center" />
       </div>
 
       {/* Right: Icons */}
-      <div className="flex gap-4 px-4 justify-self-end">
+      <div className="flex gap-3 md:gap-4 flex-shrink-0 justify-end order-2 md:order-3">
         <Icon icon={Bell} />
         <Icon icon={Question} />
       </div>
