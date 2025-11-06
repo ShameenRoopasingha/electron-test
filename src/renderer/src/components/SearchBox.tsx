@@ -16,7 +16,7 @@ interface SearchBoxProps2 {
 const Search: FC<SearchBoxProps2> = () => {
   return (
     <>
-      <div className="bg-[#2C2C2C] rounded-full  items-center  gap-2 p-2.5 w-full  ">
+      <div className="bg-[#2C2C2C] rounded-full  items-center  gap-2 p-2.5 w-full flex ">
         <div className="size-[35px] rounded-full bg-black justify-center item-center flex items-center">
           <img src={SearchIcon} alt="" srcSet="" className="size-[20px]  flex-none " />
         </div>
@@ -38,15 +38,15 @@ const SearchBox: FC<SearchBoxProps1> = ({ classNames, children }) => {
       flex-wrap md:flex-nowrap transition-all duration-500`}
     >
       {/* Left: Active */}
-      <h1 className="text-white font-extrabold text-3xl flex-shrink-0 px-2">{children}</h1>
+      <h1 className="text-white font-extrabold text-3xl flex-shrink-0 px-2 w-1/4">{children}</h1>
 
       {/* Center: Search */}
-      <div className="flex justify-center items-center w-full md:max-w-[800px] flex-1 order-3 md:order-2">
+      <div className="flex justify-center items-center md:max-w-1/2 flex-1 order-3 md:order-2">
         <Search classNames="flex content-center align-center" />
       </div>
 
       {/* Right: Icons */}
-      <div className="flex gap-3 md:gap-4 flex-shrink-0 justify-end order-2 md:order-3">
+      <div className="flex gap-3 md:gap-4 flex-shrink-0 justify-end order-2 md:order-3 w-1/4">
         <Icon icon={Bell} />
         <Icon icon={Question} />
       </div>

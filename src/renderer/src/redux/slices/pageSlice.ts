@@ -5,7 +5,7 @@ export interface PageState {
 }
 
 const initialState: PageState = {
-  currentPage: 'sales'
+  currentPage: 'SALES'
 }
 
 const pageSlice = createSlice({

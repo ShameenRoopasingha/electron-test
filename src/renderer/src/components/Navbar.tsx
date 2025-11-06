@@ -1,4 +1,4 @@
-import { FC, use } from 'react'
+import { FC } from 'react'
 import logo from '../assets/Dreams Forged in Code.png'
 import sale from '../assets/icons/sale.png'
 import items from '../assets/icons/medicine (2).png'
@@ -17,10 +17,13 @@ interface SidebarProps {
   onSelect?: (key: string) => void
 }
 
-const Navbar: FC<SidebarProps> = ({ active, onSelect }) => {
-  //   const page = useAppSelector((state) => state.page.currentPage)
+const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
+  const currentPage = useAppSelector((state) => state.page.currentPage)
+
+  const active = propActive || currentPage
 
   // Menu items config (reusable)
   const menuItems: { key: string; label: string; icon: string; path: string }[] = [
@@ -64,10 +67,12 @@ const Navbar: FC<SidebarProps> = ({ active, onSelect }) => {
                     navigate(item.path)
                   }}
                   className={`group flex justify-between items-center gap-2 w-full px-3 py-3 rounded-lg text-sm font-semibold transition text-gray-400 focus:bg-[#0c0c0c] focus:text-white hover:bg-[#383838] hover:text-white
-                      
+                  ${isActive ? 'bg-[#0c0c0c] text-white' : 'bg-transparent'}
                     `}
                 >
-                  <div className="size-fit  rounded-md flex justify-center items-center bg-[#161616] text-gray-400  group-focus:bg-white group-focus:text-white">
+                  <div
+                    className={`size-fit  rounded-md flex justify-center items-center bg-[#161616] text-gray-400  group-focus:bg-white group-focus:text-white ${isActive ? 'bg-white text-white' : ''}`}
+                  >
                     <span className="p-2 ">
                       <img className="`${isActive ? '' : ''} size-8 `" src={item.icon} alt="" />
                     </span>
