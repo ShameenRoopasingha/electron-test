@@ -1,0 +1,15 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { CheckoutWhereInputObjectSchema as CheckoutWhereInputObjectSchema } from './objects/CheckoutWhereInput.schema';
+import { CheckoutOrderByWithAggregationInputObjectSchema as CheckoutOrderByWithAggregationInputObjectSchema } from './objects/CheckoutOrderByWithAggregationInput.schema';
+import { CheckoutScalarWhereWithAggregatesInputObjectSchema as CheckoutScalarWhereWithAggregatesInputObjectSchema } from './objects/CheckoutScalarWhereWithAggregatesInput.schema';
+import { CheckoutScalarFieldEnumSchema } from './enums/CheckoutScalarFieldEnum.schema';
+import { CheckoutCountAggregateInputObjectSchema as CheckoutCountAggregateInputObjectSchema } from './objects/CheckoutCountAggregateInput.schema';
+import { CheckoutMinAggregateInputObjectSchema as CheckoutMinAggregateInputObjectSchema } from './objects/CheckoutMinAggregateInput.schema';
+import { CheckoutMaxAggregateInputObjectSchema as CheckoutMaxAggregateInputObjectSchema } from './objects/CheckoutMaxAggregateInput.schema';
+import { CheckoutAvgAggregateInputObjectSchema as CheckoutAvgAggregateInputObjectSchema } from './objects/CheckoutAvgAggregateInput.schema';
+import { CheckoutSumAggregateInputObjectSchema as CheckoutSumAggregateInputObjectSchema } from './objects/CheckoutSumAggregateInput.schema';
+
+export const CheckoutGroupBySchema: z.ZodType<Prisma.CheckoutGroupByArgs> = z.object({ where: CheckoutWhereInputObjectSchema.optional(), orderBy: z.union([CheckoutOrderByWithAggregationInputObjectSchema, CheckoutOrderByWithAggregationInputObjectSchema.array()]).optional(), having: CheckoutScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(CheckoutScalarFieldEnumSchema), _count: z.union([ z.literal(true), CheckoutCountAggregateInputObjectSchema ]).optional(), _min: CheckoutMinAggregateInputObjectSchema.optional(), _max: CheckoutMaxAggregateInputObjectSchema.optional(), _avg: CheckoutAvgAggregateInputObjectSchema.optional(), _sum: CheckoutSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.CheckoutGroupByArgs>;
+
+export const CheckoutGroupByZodSchema = z.object({ where: CheckoutWhereInputObjectSchema.optional(), orderBy: z.union([CheckoutOrderByWithAggregationInputObjectSchema, CheckoutOrderByWithAggregationInputObjectSchema.array()]).optional(), having: CheckoutScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(CheckoutScalarFieldEnumSchema), _count: z.union([ z.literal(true), CheckoutCountAggregateInputObjectSchema ]).optional(), _min: CheckoutMinAggregateInputObjectSchema.optional(), _max: CheckoutMaxAggregateInputObjectSchema.optional(), _avg: CheckoutAvgAggregateInputObjectSchema.optional(), _sum: CheckoutSumAggregateInputObjectSchema.optional() }).strict();

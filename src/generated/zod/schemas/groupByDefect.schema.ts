@@ -1,0 +1,15 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { DefectWhereInputObjectSchema as DefectWhereInputObjectSchema } from './objects/DefectWhereInput.schema';
+import { DefectOrderByWithAggregationInputObjectSchema as DefectOrderByWithAggregationInputObjectSchema } from './objects/DefectOrderByWithAggregationInput.schema';
+import { DefectScalarWhereWithAggregatesInputObjectSchema as DefectScalarWhereWithAggregatesInputObjectSchema } from './objects/DefectScalarWhereWithAggregatesInput.schema';
+import { DefectScalarFieldEnumSchema } from './enums/DefectScalarFieldEnum.schema';
+import { DefectCountAggregateInputObjectSchema as DefectCountAggregateInputObjectSchema } from './objects/DefectCountAggregateInput.schema';
+import { DefectMinAggregateInputObjectSchema as DefectMinAggregateInputObjectSchema } from './objects/DefectMinAggregateInput.schema';
+import { DefectMaxAggregateInputObjectSchema as DefectMaxAggregateInputObjectSchema } from './objects/DefectMaxAggregateInput.schema';
+import { DefectAvgAggregateInputObjectSchema as DefectAvgAggregateInputObjectSchema } from './objects/DefectAvgAggregateInput.schema';
+import { DefectSumAggregateInputObjectSchema as DefectSumAggregateInputObjectSchema } from './objects/DefectSumAggregateInput.schema';
+
+export const DefectGroupBySchema: z.ZodType<Prisma.DefectGroupByArgs> = z.object({ where: DefectWhereInputObjectSchema.optional(), orderBy: z.union([DefectOrderByWithAggregationInputObjectSchema, DefectOrderByWithAggregationInputObjectSchema.array()]).optional(), having: DefectScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(DefectScalarFieldEnumSchema), _count: z.union([ z.literal(true), DefectCountAggregateInputObjectSchema ]).optional(), _min: DefectMinAggregateInputObjectSchema.optional(), _max: DefectMaxAggregateInputObjectSchema.optional(), _avg: DefectAvgAggregateInputObjectSchema.optional(), _sum: DefectSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.DefectGroupByArgs>;
+
+export const DefectGroupByZodSchema = z.object({ where: DefectWhereInputObjectSchema.optional(), orderBy: z.union([DefectOrderByWithAggregationInputObjectSchema, DefectOrderByWithAggregationInputObjectSchema.array()]).optional(), having: DefectScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(DefectScalarFieldEnumSchema), _count: z.union([ z.literal(true), DefectCountAggregateInputObjectSchema ]).optional(), _min: DefectMinAggregateInputObjectSchema.optional(), _max: DefectMaxAggregateInputObjectSchema.optional(), _avg: DefectAvgAggregateInputObjectSchema.optional(), _sum: DefectSumAggregateInputObjectSchema.optional() }).strict();

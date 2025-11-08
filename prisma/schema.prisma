@@ -1,0 +1,197 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "../src/generated/zod"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// -------------------- MODELS --------------------
+
+model User {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String
+  role         String
+  fname        String
+  lname        String
+  phone        String   @unique
+  address      String
+  bank_account String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  bills        Bill[]
+  sessions     UserSession[]
+  expiredItems ExpiredItem[]
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  phone     String   @unique
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bills     Bill[]
+}
+
+model Supplier {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  phone     String   @unique
+  company   String
+  address   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items     Item[]
+  restocks  Restock[]
+}
+
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  items       Item[]
+}
+
+model Item {
+  id              Int       @id @default(autoincrement())
+  name            String
+  categoryId      Int
+  supplierId      Int
+  barcode         String    @unique
+  costPrice       Float
+  sellingPrice    Float
+  quantityInStock Int
+  reorder_level   Int
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  category  Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  supplier  Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  checkouts Checkout[]
+  returnedOrders ReturnedOrder[]
+  defects   Defect[]
+  expiredItems ExpiredItem[]
+  restockItems RestockItem[]
+}
+
+model Bill {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  customerId    Int
+  totalAmount   Float
+  paymentMethod String
+  paymentStatus String  @default("pending")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  customer  Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  checkouts Checkout[]
+  returnedOrders ReturnedOrder[]
+}
+
+model Checkout {
+  id          Int      @id @default(autoincrement())
+  billId      Int
+  itemId      Int
+  quantity    Int
+  price       Float
+  payedAmount Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  bill  Bill @relation(fields: [billId], references: [id], onDelete: Cascade)
+  item  Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model Restock {
+  id         Int      @id @default(autoincrement())
+  supplierId Int
+  userId     Int
+  totalCost  Float
+  createdAt  DateTime @default(now())
+
+  supplier   Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  items      RestockItem[]
+}
+
+model RestockItem {
+  id         Int      @id @default(autoincrement())
+  restockId  Int
+  itemId     Int?
+  quantity   Int
+  costPrice  Float
+
+  restock Restock @relation(fields: [restockId], references: [id], onDelete: Cascade)
+  item    Item?    @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model ReturnedOrder {
+  id        Int      @id @default(autoincrement())
+  billId    Int?
+  itemId    Int?
+  quantity  Int
+  reason    String
+  createdAt DateTime @default(now())
+
+  bill Bill? @relation(fields: [billId], references: [id], onDelete: Cascade)
+  item Item? @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model Defect {
+  id         Int      @id @default(autoincrement())
+  itemId     Int?
+  quantity   Int
+  reason     String
+  reportedBy Int
+  createdAt  DateTime @default(now())
+
+  item Item? @relation(fields: [itemId], references: [id], onDelete: Cascade)
+}
+
+model ExpiredItem {
+  id             Int      @id @default(autoincrement())
+  itemId         Int?
+  quantity       Int
+  expirationDate DateTime
+  disposedBy     Int
+  reason         String?
+  createdAt      DateTime @default(now())
+
+  item Item? @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  user User  @relation(fields: [disposedBy], references: [id], onDelete: Cascade)
+}
+
+model UserSession {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  token      String   @unique
+  ipAddress  String?
+  deviceInfo String?
+  loginTime  DateTime @default(now())
+  logoutTime DateTime?
+  isActive   Boolean  @default(true)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

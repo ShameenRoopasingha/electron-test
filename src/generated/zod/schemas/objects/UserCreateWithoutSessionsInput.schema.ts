@@ -1,0 +1,22 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+import { BillCreateNestedManyWithoutUserInputObjectSchema as BillCreateNestedManyWithoutUserInputObjectSchema } from './BillCreateNestedManyWithoutUserInput.schema';
+import { ExpiredItemCreateNestedManyWithoutUserInputObjectSchema as ExpiredItemCreateNestedManyWithoutUserInputObjectSchema } from './ExpiredItemCreateNestedManyWithoutUserInput.schema'
+
+const makeSchema = () => z.object({
+  username: z.string(),
+  email: z.string(),
+  passwordHash: z.string(),
+  role: z.string(),
+  fname: z.string(),
+  lname: z.string(),
+  phone: z.string(),
+  address: z.string(),
+  bank_account: z.string(),
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
+  bills: z.lazy(() => BillCreateNestedManyWithoutUserInputObjectSchema).optional(),
+  expiredItems: z.lazy(() => ExpiredItemCreateNestedManyWithoutUserInputObjectSchema).optional()
+}).strict();
+export const UserCreateWithoutSessionsInputObjectSchema: z.ZodType<Prisma.UserCreateWithoutSessionsInput> = makeSchema() as unknown as z.ZodType<Prisma.UserCreateWithoutSessionsInput>;
+export const UserCreateWithoutSessionsInputObjectZodSchema = makeSchema();

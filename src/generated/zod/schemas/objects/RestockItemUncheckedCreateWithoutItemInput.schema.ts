@@ -1,0 +1,12 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+
+
+const makeSchema = () => z.object({
+  id: z.number().int().optional(),
+  restockId: z.number().int(),
+  quantity: z.number().int(),
+  costPrice: z.number()
+}).strict();
+export const RestockItemUncheckedCreateWithoutItemInputObjectSchema: z.ZodType<Prisma.RestockItemUncheckedCreateWithoutItemInput> = makeSchema() as unknown as z.ZodType<Prisma.RestockItemUncheckedCreateWithoutItemInput>;
+export const RestockItemUncheckedCreateWithoutItemInputObjectZodSchema = makeSchema();

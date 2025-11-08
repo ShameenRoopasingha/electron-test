@@ -1,4 +1,5 @@
-import { sqliteTable, text, integer, real, sql } from 'drizzle-orm/sqlite-core'
+import { sqliteTable, text, integer, real } from 'drizzle-orm/sqlite-core'
+import { sql } from 'drizzle-orm'
 import { createInsertSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -241,16 +242,16 @@ export const insertExpiredItemSchema = createInsertSchema(expired_items, {
   reason: z.string().optional()
 })
 
-// ✅ Zod schema for session insertion (sign-in)
-export const insertUserSessionSchema = createInsertSchema(user_sessions, {
-  token: z.string().uuid('Invalid token format'),
-  ipAddress: z.string().ip().optional(),
-  deviceInfo: z.string().optional(),
-  isActive: z.boolean().default(true)
-})
+// // ✅ Zod schema for session insertion (sign-in)
+// export const insertUserSessionSchema = createInsertSchema(user_sessions, {
+//   token: z.string().uuid('Invalid token format'),
+//   ipAddress: z.string().ip().optional(),
+//   deviceInfo: z.string().optional(),
+//   isActive: z.boolean().default(true)
+// })
 
-// ✅ Zod schema for sign-in request
-export const signInSchema = z.object({
-  username: z.string().min(3),
-  password: z.string().min(6)
-})
+// // ✅ Zod schema for sign-in request
+// export const signInSchema = z.object({
+//   username: z.string().min(3),
+//   password: z.string().min(6)
+// })

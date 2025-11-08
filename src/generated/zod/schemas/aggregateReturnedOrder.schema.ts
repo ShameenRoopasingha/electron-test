@@ -1,0 +1,14 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { ReturnedOrderOrderByWithRelationInputObjectSchema as ReturnedOrderOrderByWithRelationInputObjectSchema } from './objects/ReturnedOrderOrderByWithRelationInput.schema';
+import { ReturnedOrderWhereInputObjectSchema as ReturnedOrderWhereInputObjectSchema } from './objects/ReturnedOrderWhereInput.schema';
+import { ReturnedOrderWhereUniqueInputObjectSchema as ReturnedOrderWhereUniqueInputObjectSchema } from './objects/ReturnedOrderWhereUniqueInput.schema';
+import { ReturnedOrderCountAggregateInputObjectSchema as ReturnedOrderCountAggregateInputObjectSchema } from './objects/ReturnedOrderCountAggregateInput.schema';
+import { ReturnedOrderMinAggregateInputObjectSchema as ReturnedOrderMinAggregateInputObjectSchema } from './objects/ReturnedOrderMinAggregateInput.schema';
+import { ReturnedOrderMaxAggregateInputObjectSchema as ReturnedOrderMaxAggregateInputObjectSchema } from './objects/ReturnedOrderMaxAggregateInput.schema';
+import { ReturnedOrderAvgAggregateInputObjectSchema as ReturnedOrderAvgAggregateInputObjectSchema } from './objects/ReturnedOrderAvgAggregateInput.schema';
+import { ReturnedOrderSumAggregateInputObjectSchema as ReturnedOrderSumAggregateInputObjectSchema } from './objects/ReturnedOrderSumAggregateInput.schema';
+
+export const ReturnedOrderAggregateSchema: z.ZodType<Prisma.ReturnedOrderAggregateArgs> = z.object({ orderBy: z.union([ReturnedOrderOrderByWithRelationInputObjectSchema, ReturnedOrderOrderByWithRelationInputObjectSchema.array()]).optional(), where: ReturnedOrderWhereInputObjectSchema.optional(), cursor: ReturnedOrderWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), ReturnedOrderCountAggregateInputObjectSchema ]).optional(), _min: ReturnedOrderMinAggregateInputObjectSchema.optional(), _max: ReturnedOrderMaxAggregateInputObjectSchema.optional(), _avg: ReturnedOrderAvgAggregateInputObjectSchema.optional(), _sum: ReturnedOrderSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.ReturnedOrderAggregateArgs>;
+
+export const ReturnedOrderAggregateZodSchema = z.object({ orderBy: z.union([ReturnedOrderOrderByWithRelationInputObjectSchema, ReturnedOrderOrderByWithRelationInputObjectSchema.array()]).optional(), where: ReturnedOrderWhereInputObjectSchema.optional(), cursor: ReturnedOrderWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), ReturnedOrderCountAggregateInputObjectSchema ]).optional(), _min: ReturnedOrderMinAggregateInputObjectSchema.optional(), _max: ReturnedOrderMaxAggregateInputObjectSchema.optional(), _avg: ReturnedOrderAvgAggregateInputObjectSchema.optional(), _sum: ReturnedOrderSumAggregateInputObjectSchema.optional() }).strict();
