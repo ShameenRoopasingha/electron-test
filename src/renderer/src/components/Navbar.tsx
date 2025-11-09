@@ -89,7 +89,7 @@ const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
 
       {/* Footer Logo */}
       <div className="mt-6  border-t border-gray-800 text-center text-sm opacity-60 w-[225px] h-2/12 content-center items-center justify-center flex">
-        <img src={logo} alt="logo" className="size-15" />
+        <img src={logo} alt="logo" className="size-20 brightness-100" />
       </div>
     </aside>
   )
