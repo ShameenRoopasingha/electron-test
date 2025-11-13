@@ -1,13 +1,41 @@
+import { PrismaClient } from 'generated/prisma/client'
 import { ItemInputSchema, ItemResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-import prisma from 'generated/prisma/client'
 
-export const createItem = async (data: z.infer<typeof ItemInputSchema>) => {
-  const validatedData = ItemInputSchema.parse(data)
+const prisma = new PrismaClient()
+
+export const BaseItemResult = ItemResultSchema.omit({
+  category: true,
+  supplier: true,
+  checkouts: true,
+  returnedOrders: true,
+  defects: true,
+  expiredItems: true,
+  restockItems: true
+})
+export type BaseItemResultType = z.infer<typeof BaseItemResult>
+
+export const BaseItemInput = ItemInputSchema.omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+  category: true,
+  supplier: true,
+  checkouts: true,
+  returnedOrders: true,
+  defects: true,
+  expiredItems: true,
+  restockItems: true
+})
+export type BaseItemInputType = z.infer<typeof BaseItemInput>
+
+export const createItem = async (data: BaseItemInputType): Promise<BaseItemResultType> => {
+  const validatedData = BaseItemInput.parse(data)
   const item = await prisma.item.create({
     data: {
       name: validatedData.name,
       categoryId: validatedData.categoryId,
+      manufacturer: validatedData.manufacturer,
       supplierId: validatedData.supplierId,
       barcode: validatedData.barcode,
       costPrice: validatedData.costPrice,
@@ -16,25 +44,39 @@ export const createItem = async (data: z.infer<typeof ItemInputSchema>) => {
       reorder_level: validatedData.reorder_level
     }
   })
-  return ItemResultSchema.parse(item)
+  return BaseItemResult.parse(item)
 }
 
-export const getItems = async () => {
-  const items = await prisma.item.findMany({
-    include: { category: true, supplier: true }
+export const getItemById = async (id: number): Promise<BaseItemResultType> => {
+  const itemById = await prisma.item.findUnique({
+    where: { id }
   })
-  return items.map((item: z.infer<typeof ItemResultSchema>) => ItemResultSchema.parse(item))
+  if (!itemById) {
+    throw new Error('Item not found')
+  }
+  return BaseItemResult.parse(itemById)
 }
 
-export const updateItem = async (id: number, data: Partial<z.infer<typeof ItemInputSchema>>) => {
-  const validatedData = ItemInputSchema.partial().parse(data)
-  const item = await prisma.item.update({
+export const getAllItems = async (): Promise<BaseItemResultType[]> => {
+  const items = await prisma.item.findMany()
+  return items.map((item) => BaseItemResult.parse(item))
+}
+
+export const updateItem = async (
+  id: number,
+  data: Partial<BaseItemInputType>
+): Promise<BaseItemResultType> => {
+  const validatedData = BaseItemInput.partial().parse(data)
+  const updatedItem = await prisma.item.update({
     where: { id },
-    data: validatedData
+    data: { ...validatedData }
   })
-  return ItemResultSchema.parse(item)
+
+  return BaseItemResult.parse(updatedItem)
 }
 
-export const deleteItem = async (id: number) => {
-  await prisma.item.delete({ where: { id } })
+export const deleteItem = async (id: number): Promise<void> => {
+  await prisma.item.delete({
+    where: { id }
+  })
 }

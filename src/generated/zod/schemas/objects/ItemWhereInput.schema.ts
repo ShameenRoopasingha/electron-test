@@ -21,6 +21,7 @@ const itemwhereinputSchema = z.object({
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   name: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   categoryId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
+  manufacturer: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   supplierId: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
   barcode: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   costPrice: z.union([z.lazy(() => FloatFilterObjectSchema), z.number()]).optional(),

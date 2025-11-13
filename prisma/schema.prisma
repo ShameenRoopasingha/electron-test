@@ -26,7 +26,7 @@ model User {
   id           Int      @id @default(autoincrement())
   username     String   @unique
   email        String   @unique
-  passwordHash String
+  password     String
   role         String
   fname        String
   lname        String
@@ -78,6 +78,7 @@ model Item {
   id              Int       @id @default(autoincrement())
   name            String
   categoryId      Int
+  manufacturer    String
   supplierId      Int
   barcode         String    @unique
   costPrice       Float
@@ -186,7 +187,7 @@ model ExpiredItem {
 
 model UserSession {
   id         Int      @id @default(autoincrement())
-  userId     Int
+  userId     Int      
   token      String   @unique
   ipAddress  String?
   deviceInfo String?

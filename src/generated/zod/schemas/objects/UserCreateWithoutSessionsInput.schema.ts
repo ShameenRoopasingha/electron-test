@@ -6,7 +6,7 @@ import { ExpiredItemCreateNestedManyWithoutUserInputObjectSchema as ExpiredItemC
 const makeSchema = () => z.object({
   username: z.string(),
   email: z.string(),
-  passwordHash: z.string(),
+  password: z.string(),
   role: z.string(),
   fname: z.string(),
   lname: z.string(),

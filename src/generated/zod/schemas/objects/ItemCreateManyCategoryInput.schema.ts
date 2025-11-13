@@ -5,6 +5,7 @@ import type { Prisma } from '../../../prisma/client';
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
   name: z.string(),
+  manufacturer: z.string(),
   supplierId: z.number().int(),
   barcode: z.string(),
   costPrice: z.number(),

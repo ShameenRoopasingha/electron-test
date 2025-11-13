@@ -9,6 +9,7 @@ import { ExpiredItemCreateNestedManyWithoutItemInputObjectSchema as ExpiredItemC
 
 const makeSchema = () => z.object({
   name: z.string(),
+  manufacturer: z.string(),
   barcode: z.string(),
   costPrice: z.number(),
   sellingPrice: z.number(),

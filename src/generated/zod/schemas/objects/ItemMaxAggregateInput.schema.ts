@@ -6,6 +6,7 @@ const makeSchema = () => z.object({
   id: z.literal(true).optional(),
   name: z.literal(true).optional(),
   categoryId: z.literal(true).optional(),
+  manufacturer: z.literal(true).optional(),
   supplierId: z.literal(true).optional(),
   barcode: z.literal(true).optional(),
   costPrice: z.literal(true).optional(),

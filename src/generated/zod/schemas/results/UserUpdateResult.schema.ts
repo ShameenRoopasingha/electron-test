@@ -3,7 +3,7 @@ export const UserUpdateResultSchema = z.nullable(z.object({
   id: z.number().int(),
   username: z.string(),
   email: z.string(),
-  passwordHash: z.string(),
+  password: z.string(),
   role: z.string(),
   fname: z.string(),
   lname: z.string(),

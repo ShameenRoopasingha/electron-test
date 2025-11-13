@@ -17,7 +17,8 @@
     "src/main/**/*",
     "src/generated/**/*",
     "src/generated/prisma-client/**/*",
-    "src/generated/zod/**/*"
+    "src/generated/zod/**/*",
+
   ],
   "exclude": [
     "node_modules",

@@ -12,6 +12,7 @@ const itemscalarwherewithaggregatesinputSchema = z.object({
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   name: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   categoryId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
+  manufacturer: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   supplierId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   barcode: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   costPrice: z.union([z.lazy(() => FloatWithAggregatesFilterObjectSchema), z.number()]).optional(),
