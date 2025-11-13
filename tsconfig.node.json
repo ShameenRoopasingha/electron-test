@@ -1,11 +1,28 @@
 {
-  "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
-  "include": ["electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
   "compilerOptions": {
-    "composite": true,
+    "target": "es2020",
     "module": "esnext",
-    "types": ["electron-vite/node"],
-    "moduleResolution": "bundler",
-    "target": "esnext"
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist/main",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    }
   },
+  "include": [
+    "src/main/**/*",
+    "src/generated/**/*",
+    "src/generated/prisma-client/**/*",
+    "src/generated/zod/**/*",
+
+  ],
+  "exclude": [
+    "node_modules",
+    "src/renderer",
+    "dist"
+  ]
 }

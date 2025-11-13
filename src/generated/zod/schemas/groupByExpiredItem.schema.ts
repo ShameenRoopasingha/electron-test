@@ -1,0 +1,15 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { ExpiredItemWhereInputObjectSchema as ExpiredItemWhereInputObjectSchema } from './objects/ExpiredItemWhereInput.schema';
+import { ExpiredItemOrderByWithAggregationInputObjectSchema as ExpiredItemOrderByWithAggregationInputObjectSchema } from './objects/ExpiredItemOrderByWithAggregationInput.schema';
+import { ExpiredItemScalarWhereWithAggregatesInputObjectSchema as ExpiredItemScalarWhereWithAggregatesInputObjectSchema } from './objects/ExpiredItemScalarWhereWithAggregatesInput.schema';
+import { ExpiredItemScalarFieldEnumSchema } from './enums/ExpiredItemScalarFieldEnum.schema';
+import { ExpiredItemCountAggregateInputObjectSchema as ExpiredItemCountAggregateInputObjectSchema } from './objects/ExpiredItemCountAggregateInput.schema';
+import { ExpiredItemMinAggregateInputObjectSchema as ExpiredItemMinAggregateInputObjectSchema } from './objects/ExpiredItemMinAggregateInput.schema';
+import { ExpiredItemMaxAggregateInputObjectSchema as ExpiredItemMaxAggregateInputObjectSchema } from './objects/ExpiredItemMaxAggregateInput.schema';
+import { ExpiredItemAvgAggregateInputObjectSchema as ExpiredItemAvgAggregateInputObjectSchema } from './objects/ExpiredItemAvgAggregateInput.schema';
+import { ExpiredItemSumAggregateInputObjectSchema as ExpiredItemSumAggregateInputObjectSchema } from './objects/ExpiredItemSumAggregateInput.schema';
+
+export const ExpiredItemGroupBySchema: z.ZodType<Prisma.ExpiredItemGroupByArgs> = z.object({ where: ExpiredItemWhereInputObjectSchema.optional(), orderBy: z.union([ExpiredItemOrderByWithAggregationInputObjectSchema, ExpiredItemOrderByWithAggregationInputObjectSchema.array()]).optional(), having: ExpiredItemScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(ExpiredItemScalarFieldEnumSchema), _count: z.union([ z.literal(true), ExpiredItemCountAggregateInputObjectSchema ]).optional(), _min: ExpiredItemMinAggregateInputObjectSchema.optional(), _max: ExpiredItemMaxAggregateInputObjectSchema.optional(), _avg: ExpiredItemAvgAggregateInputObjectSchema.optional(), _sum: ExpiredItemSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.ExpiredItemGroupByArgs>;
+
+export const ExpiredItemGroupByZodSchema = z.object({ where: ExpiredItemWhereInputObjectSchema.optional(), orderBy: z.union([ExpiredItemOrderByWithAggregationInputObjectSchema, ExpiredItemOrderByWithAggregationInputObjectSchema.array()]).optional(), having: ExpiredItemScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(ExpiredItemScalarFieldEnumSchema), _count: z.union([ z.literal(true), ExpiredItemCountAggregateInputObjectSchema ]).optional(), _min: ExpiredItemMinAggregateInputObjectSchema.optional(), _max: ExpiredItemMaxAggregateInputObjectSchema.optional(), _avg: ExpiredItemAvgAggregateInputObjectSchema.optional(), _sum: ExpiredItemSumAggregateInputObjectSchema.optional() }).strict();

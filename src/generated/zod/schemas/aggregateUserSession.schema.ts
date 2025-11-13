@@ -1,0 +1,14 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { UserSessionOrderByWithRelationInputObjectSchema as UserSessionOrderByWithRelationInputObjectSchema } from './objects/UserSessionOrderByWithRelationInput.schema';
+import { UserSessionWhereInputObjectSchema as UserSessionWhereInputObjectSchema } from './objects/UserSessionWhereInput.schema';
+import { UserSessionWhereUniqueInputObjectSchema as UserSessionWhereUniqueInputObjectSchema } from './objects/UserSessionWhereUniqueInput.schema';
+import { UserSessionCountAggregateInputObjectSchema as UserSessionCountAggregateInputObjectSchema } from './objects/UserSessionCountAggregateInput.schema';
+import { UserSessionMinAggregateInputObjectSchema as UserSessionMinAggregateInputObjectSchema } from './objects/UserSessionMinAggregateInput.schema';
+import { UserSessionMaxAggregateInputObjectSchema as UserSessionMaxAggregateInputObjectSchema } from './objects/UserSessionMaxAggregateInput.schema';
+import { UserSessionAvgAggregateInputObjectSchema as UserSessionAvgAggregateInputObjectSchema } from './objects/UserSessionAvgAggregateInput.schema';
+import { UserSessionSumAggregateInputObjectSchema as UserSessionSumAggregateInputObjectSchema } from './objects/UserSessionSumAggregateInput.schema';
+
+export const UserSessionAggregateSchema: z.ZodType<Prisma.UserSessionAggregateArgs> = z.object({ orderBy: z.union([UserSessionOrderByWithRelationInputObjectSchema, UserSessionOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserSessionWhereInputObjectSchema.optional(), cursor: UserSessionWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), UserSessionCountAggregateInputObjectSchema ]).optional(), _min: UserSessionMinAggregateInputObjectSchema.optional(), _max: UserSessionMaxAggregateInputObjectSchema.optional(), _avg: UserSessionAvgAggregateInputObjectSchema.optional(), _sum: UserSessionSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.UserSessionAggregateArgs>;
+
+export const UserSessionAggregateZodSchema = z.object({ orderBy: z.union([UserSessionOrderByWithRelationInputObjectSchema, UserSessionOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserSessionWhereInputObjectSchema.optional(), cursor: UserSessionWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), UserSessionCountAggregateInputObjectSchema ]).optional(), _min: UserSessionMinAggregateInputObjectSchema.optional(), _max: UserSessionMaxAggregateInputObjectSchema.optional(), _avg: UserSessionAvgAggregateInputObjectSchema.optional(), _sum: UserSessionSumAggregateInputObjectSchema.optional() }).strict();

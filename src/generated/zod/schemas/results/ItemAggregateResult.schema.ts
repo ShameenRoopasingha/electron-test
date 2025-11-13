@@ -1,0 +1,68 @@
+import * as z from 'zod';
+export const ItemAggregateResultSchema = z.object({  _count: z.object({
+    id: z.number(),
+    name: z.number(),
+    categoryId: z.number(),
+    manufacturer: z.number(),
+    supplierId: z.number(),
+    barcode: z.number(),
+    costPrice: z.number(),
+    sellingPrice: z.number(),
+    quantityInStock: z.number(),
+    reorder_level: z.number(),
+    createdAt: z.number(),
+    updatedAt: z.number(),
+    category: z.number(),
+    supplier: z.number(),
+    checkouts: z.number(),
+    returnedOrders: z.number(),
+    defects: z.number(),
+    expiredItems: z.number(),
+    restockItems: z.number()
+  }).optional(),
+  _sum: z.object({
+    id: z.number().nullable(),
+    categoryId: z.number().nullable(),
+    supplierId: z.number().nullable(),
+    costPrice: z.number().nullable(),
+    sellingPrice: z.number().nullable(),
+    quantityInStock: z.number().nullable(),
+    reorder_level: z.number().nullable()
+  }).nullable().optional(),
+  _avg: z.object({
+    id: z.number().nullable(),
+    categoryId: z.number().nullable(),
+    supplierId: z.number().nullable(),
+    costPrice: z.number().nullable(),
+    sellingPrice: z.number().nullable(),
+    quantityInStock: z.number().nullable(),
+    reorder_level: z.number().nullable()
+  }).nullable().optional(),
+  _min: z.object({
+    id: z.number().int().nullable(),
+    name: z.string().nullable(),
+    categoryId: z.number().int().nullable(),
+    manufacturer: z.string().nullable(),
+    supplierId: z.number().int().nullable(),
+    barcode: z.string().nullable(),
+    costPrice: z.number().nullable(),
+    sellingPrice: z.number().nullable(),
+    quantityInStock: z.number().int().nullable(),
+    reorder_level: z.number().int().nullable(),
+    createdAt: z.date().nullable(),
+    updatedAt: z.date().nullable()
+  }).nullable().optional(),
+  _max: z.object({
+    id: z.number().int().nullable(),
+    name: z.string().nullable(),
+    categoryId: z.number().int().nullable(),
+    manufacturer: z.string().nullable(),
+    supplierId: z.number().int().nullable(),
+    barcode: z.string().nullable(),
+    costPrice: z.number().nullable(),
+    sellingPrice: z.number().nullable(),
+    quantityInStock: z.number().int().nullable(),
+    reorder_level: z.number().int().nullable(),
+    createdAt: z.date().nullable(),
+    updatedAt: z.date().nullable()
+  }).nullable().optional()});

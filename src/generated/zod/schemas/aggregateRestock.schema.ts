@@ -1,0 +1,14 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { RestockOrderByWithRelationInputObjectSchema as RestockOrderByWithRelationInputObjectSchema } from './objects/RestockOrderByWithRelationInput.schema';
+import { RestockWhereInputObjectSchema as RestockWhereInputObjectSchema } from './objects/RestockWhereInput.schema';
+import { RestockWhereUniqueInputObjectSchema as RestockWhereUniqueInputObjectSchema } from './objects/RestockWhereUniqueInput.schema';
+import { RestockCountAggregateInputObjectSchema as RestockCountAggregateInputObjectSchema } from './objects/RestockCountAggregateInput.schema';
+import { RestockMinAggregateInputObjectSchema as RestockMinAggregateInputObjectSchema } from './objects/RestockMinAggregateInput.schema';
+import { RestockMaxAggregateInputObjectSchema as RestockMaxAggregateInputObjectSchema } from './objects/RestockMaxAggregateInput.schema';
+import { RestockAvgAggregateInputObjectSchema as RestockAvgAggregateInputObjectSchema } from './objects/RestockAvgAggregateInput.schema';
+import { RestockSumAggregateInputObjectSchema as RestockSumAggregateInputObjectSchema } from './objects/RestockSumAggregateInput.schema';
+
+export const RestockAggregateSchema: z.ZodType<Prisma.RestockAggregateArgs> = z.object({ orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), RestockCountAggregateInputObjectSchema ]).optional(), _min: RestockMinAggregateInputObjectSchema.optional(), _max: RestockMaxAggregateInputObjectSchema.optional(), _avg: RestockAvgAggregateInputObjectSchema.optional(), _sum: RestockSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.RestockAggregateArgs>;
+
+export const RestockAggregateZodSchema = z.object({ orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), RestockCountAggregateInputObjectSchema ]).optional(), _min: RestockMinAggregateInputObjectSchema.optional(), _max: RestockMaxAggregateInputObjectSchema.optional(), _avg: RestockAvgAggregateInputObjectSchema.optional(), _sum: RestockSumAggregateInputObjectSchema.optional() }).strict();

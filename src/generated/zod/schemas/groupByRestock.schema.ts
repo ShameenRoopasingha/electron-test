@@ -1,0 +1,15 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { RestockWhereInputObjectSchema as RestockWhereInputObjectSchema } from './objects/RestockWhereInput.schema';
+import { RestockOrderByWithAggregationInputObjectSchema as RestockOrderByWithAggregationInputObjectSchema } from './objects/RestockOrderByWithAggregationInput.schema';
+import { RestockScalarWhereWithAggregatesInputObjectSchema as RestockScalarWhereWithAggregatesInputObjectSchema } from './objects/RestockScalarWhereWithAggregatesInput.schema';
+import { RestockScalarFieldEnumSchema } from './enums/RestockScalarFieldEnum.schema';
+import { RestockCountAggregateInputObjectSchema as RestockCountAggregateInputObjectSchema } from './objects/RestockCountAggregateInput.schema';
+import { RestockMinAggregateInputObjectSchema as RestockMinAggregateInputObjectSchema } from './objects/RestockMinAggregateInput.schema';
+import { RestockMaxAggregateInputObjectSchema as RestockMaxAggregateInputObjectSchema } from './objects/RestockMaxAggregateInput.schema';
+import { RestockAvgAggregateInputObjectSchema as RestockAvgAggregateInputObjectSchema } from './objects/RestockAvgAggregateInput.schema';
+import { RestockSumAggregateInputObjectSchema as RestockSumAggregateInputObjectSchema } from './objects/RestockSumAggregateInput.schema';
+
+export const RestockGroupBySchema: z.ZodType<Prisma.RestockGroupByArgs> = z.object({ where: RestockWhereInputObjectSchema.optional(), orderBy: z.union([RestockOrderByWithAggregationInputObjectSchema, RestockOrderByWithAggregationInputObjectSchema.array()]).optional(), having: RestockScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(RestockScalarFieldEnumSchema), _count: z.union([ z.literal(true), RestockCountAggregateInputObjectSchema ]).optional(), _min: RestockMinAggregateInputObjectSchema.optional(), _max: RestockMaxAggregateInputObjectSchema.optional(), _avg: RestockAvgAggregateInputObjectSchema.optional(), _sum: RestockSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.RestockGroupByArgs>;
+
+export const RestockGroupByZodSchema = z.object({ where: RestockWhereInputObjectSchema.optional(), orderBy: z.union([RestockOrderByWithAggregationInputObjectSchema, RestockOrderByWithAggregationInputObjectSchema.array()]).optional(), having: RestockScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(RestockScalarFieldEnumSchema), _count: z.union([ z.literal(true), RestockCountAggregateInputObjectSchema ]).optional(), _min: RestockMinAggregateInputObjectSchema.optional(), _max: RestockMaxAggregateInputObjectSchema.optional(), _avg: RestockAvgAggregateInputObjectSchema.optional(), _sum: RestockSumAggregateInputObjectSchema.optional() }).strict();

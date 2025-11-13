@@ -1,0 +1,26 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsInputObjectSchema } from './IntFieldUpdateOperationsInput.schema';
+import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
+import { BillUncheckedUpdateManyWithoutUserNestedInputObjectSchema as BillUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './BillUncheckedUpdateManyWithoutUserNestedInput.schema';
+import { UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema as UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './UserSessionUncheckedUpdateManyWithoutUserNestedInput.schema'
+
+const makeSchema = () => z.object({
+  id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
+  username: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  role: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  fname: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  lname: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  phone: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  address: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  bank_account: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  bills: z.lazy(() => BillUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+  sessions: z.lazy(() => UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional()
+}).strict();
+export const UserUncheckedUpdateWithoutExpiredItemsInputObjectSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutExpiredItemsInput> = makeSchema() as unknown as z.ZodType<Prisma.UserUncheckedUpdateWithoutExpiredItemsInput>;
+export const UserUncheckedUpdateWithoutExpiredItemsInputObjectZodSchema = makeSchema();

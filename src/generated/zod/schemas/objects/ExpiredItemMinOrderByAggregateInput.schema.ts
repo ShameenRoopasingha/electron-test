@@ -1,0 +1,15 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+import { SortOrderSchema } from '../enums/SortOrder.schema'
+
+const makeSchema = () => z.object({
+  id: SortOrderSchema.optional(),
+  itemId: SortOrderSchema.optional(),
+  quantity: SortOrderSchema.optional(),
+  expirationDate: SortOrderSchema.optional(),
+  disposedBy: SortOrderSchema.optional(),
+  reason: SortOrderSchema.optional(),
+  createdAt: SortOrderSchema.optional()
+}).strict();
+export const ExpiredItemMinOrderByAggregateInputObjectSchema: z.ZodType<Prisma.ExpiredItemMinOrderByAggregateInput> = makeSchema() as unknown as z.ZodType<Prisma.ExpiredItemMinOrderByAggregateInput>;
+export const ExpiredItemMinOrderByAggregateInputObjectZodSchema = makeSchema();
