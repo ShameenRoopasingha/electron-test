@@ -4,8 +4,8 @@ import z from 'zod'
 import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
-const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_key'
 
+// ✅ Base schemas (omit auto-managed and relational fields)
 export const BaseUserInput = UserInputSchema.omit({
   id: true,
   createdAt: true,
@@ -26,57 +26,54 @@ export const BaseUserResult = UserResultSchema.omit({
 })
 export type BaseUserResultType = z.infer<typeof BaseUserResult>
 
+// ✅ Create user with bcrypt hashing
 export const createUser = async (data: BaseUserInputType): Promise<BaseUserResultType> => {
   const validatedData = BaseUserInput.parse(data)
   const hashedPassword = await bcrypt.hash(validatedData.password, 10)
+
   const user = await prisma.user.create({
     data: {
-      username: validatedData.username,
-      email: validatedData.email,
-      password: hashedPassword,
-      fname: validatedData.fname,
-      lname: validatedData.lname,
-      role: validatedData.role,
-      phone: validatedData.phone,
-      address: validatedData.address,
-      bank_account: validatedData.bank_account
+      ...validatedData,
+      password: hashedPassword
     }
   })
+
   return BaseUserResult.parse(user)
 }
 
+// ✅ Get single user
 export const getUserById = async (id: number): Promise<BaseUserResultType> => {
-  const userById = await prisma.user.findUnique({
-    where: { id }
-  })
-  if (!userById) {
-    throw new Error('User not found')
-  }
-  return BaseUserResult.parse(userById)
+  const user = await prisma.user.findUnique({ where: { id } })
+  if (!user) throw new Error('User not found')
+  return BaseUserResult.parse(user)
 }
 
+// ✅ Get all users
 export const getAllUser = async (): Promise<BaseUserResultType[]> => {
-  const user = await prisma.user.findMany()
-  return user.map((user) => BaseUserResult.parse(user))
+  const users = await prisma.user.findMany()
+  return users.map((u) => BaseUserResult.parse(u))
 }
 
+// ✅ Update user (rehash password if provided)
 export const updateUser = async (
   id: number,
   data: Partial<BaseUserInputType>
 ): Promise<BaseUserResultType> => {
   const validatedData = BaseUserInput.partial().parse(data)
-  if (validatedData.passwordHash) {
-    validatedData.passwordHash = await bcrypt.hash(validatedData.passwordHash, 10)
+
+  if (validatedData.password) {
+    validatedData.password = await bcrypt.hash(validatedData.password, 10)
   }
+
   const updatedUser = await prisma.user.update({
     where: { id },
-    data: { ...validatedData }
+    data: validatedData
   })
+
   return BaseUserResult.parse(updatedUser)
 }
 
+// ✅ Delete user
 export const deleteUser = async (id: number): Promise<void> => {
-  await prisma.user.delete({
-    where: { id }
-  })
+  await prisma.user.delete({ where: { id } })
 }

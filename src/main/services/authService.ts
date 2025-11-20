@@ -1,13 +1,17 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { PrismaClient } from 'generated/prisma/client'
-import { BaseUserResult } from './userService'
 import { UserInputSchema } from 'generated/zod/schemas'
-import z from 'zod'
+import { BaseUserResult } from './userService'
+import { z } from 'zod'
 
+const prisma = new PrismaClient()
+const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_key'
+
+// ✅ Use pick() to create LoginSchema from existing UserInputSchema
 export const LoginSchema = UserInputSchema.pick({
   username: true,
-  password: true // rename later as 'password' logically
+  password: true
 })
 export type LoginInput = z.infer<typeof LoginSchema>
 
@@ -16,11 +20,10 @@ export interface LoginResult {
   user: z.infer<typeof BaseUserResult>
 }
 
-const prisma = new PrismaClient()
-const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_key'
-
+// ✅ Login function with Zod validation + return typing
 export const loginUser = async (input: LoginInput): Promise<LoginResult> => {
   const { username, password } = LoginSchema.parse(input)
+
   const user = await prisma.user.findUnique({ where: { username } })
   if (!user) throw new Error('User not found')
 
@@ -31,9 +34,17 @@ export const loginUser = async (input: LoginInput): Promise<LoginResult> => {
   return { token, user: BaseUserResult.parse(user) }
 }
 
-export const verifyToken = (token: string): string | jwt.JwtPayload => {
+// ✅ Strongly typed token verification
+export interface TokenPayload {
+  id: number
+  role: string
+  iat?: number
+  exp?: number
+}
+
+export const verifyToken = (token: string): TokenPayload => {
   try {
-    return jwt.verify(token, JWT_SECRET)
+    return jwt.verify(token, JWT_SECRET) as TokenPayload
   } catch {
     throw new Error('Invalid token')
   }
