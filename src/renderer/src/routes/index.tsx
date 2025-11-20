@@ -1,4 +1,4 @@
-import { itemRoutes } from './item.route'
+import { itemRoutes } from './Item.route'
 import { Navigate, RouteObject } from 'react-router-dom'
 import { salesRoutes } from './sales.route'
 import { dashboardRoute } from './dashboard.route'
