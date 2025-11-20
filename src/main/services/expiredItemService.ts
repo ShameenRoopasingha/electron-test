@@ -1,7 +1,7 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { ExpiredItemInputSchema, ExpiredItemResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 export const BaseExpiredItemInput = ExpiredItemInputSchema.omit({
   id: true,
   createdAt: true,

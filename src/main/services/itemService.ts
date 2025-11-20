@@ -1,8 +1,9 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { ItemInputSchema, ItemResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
+import { validate } from '../../../lib/validate'
 
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 
 export const BaseItemResult = ItemResultSchema.omit({
   category: true,
@@ -30,7 +31,7 @@ export const BaseItemInput = ItemInputSchema.omit({
 export type BaseItemInputType = z.infer<typeof BaseItemInput>
 
 export const createItem = async (data: BaseItemInputType): Promise<BaseItemResultType> => {
-  const validatedData = BaseItemInput.parse(data)
+  const validatedData = validate(BaseItemInput, data)
   const item = await prisma.item.create({
     data: {
       name: validatedData.name,

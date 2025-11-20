@@ -1,9 +1,10 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { UserInputSchema, UserResultSchema } from 'generated/zod/schemas'
 import z from 'zod'
 import bcrypt from 'bcrypt'
+import { validate } from '../../../lib/validate'
 
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 
 // ✅ Base schemas (omit auto-managed and relational fields)
 export const BaseUserInput = UserInputSchema.omit({
@@ -28,7 +29,7 @@ export type BaseUserResultType = z.infer<typeof BaseUserResult>
 
 // ✅ Create user with bcrypt hashing
 export const createUser = async (data: BaseUserInputType): Promise<BaseUserResultType> => {
-  const validatedData = BaseUserInput.parse(data)
+  const validatedData = validate(BaseUserInput, data)
   const hashedPassword = await bcrypt.hash(validatedData.password, 10)
 
   const user = await prisma.user.create({

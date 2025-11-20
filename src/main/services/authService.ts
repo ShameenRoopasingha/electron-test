@@ -1,12 +1,12 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { UserInputSchema } from 'generated/zod/schemas'
 import { BaseUserResult } from './userService'
 import { z } from 'zod'
 
-const prisma = new PrismaClient()
-const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_key'
+const prisma = getPrisma()
+const JWT_SECRET = process.env.JWT_SECRET ?? ''
 
 // ✅ Use pick() to create LoginSchema from existing UserInputSchema
 export const LoginSchema = UserInputSchema.pick({

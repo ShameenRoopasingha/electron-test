@@ -1,7 +1,9 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
 import { UserSessionInputSchema, UserSessionResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+
+const prisma = getPrisma()
 export const BaseUserSessionInput = UserSessionInputSchema.omit({
   id: true,
   loginTime: true,
@@ -13,8 +15,10 @@ export const BaseUserSessionResult = UserSessionResultSchema.omit({
   user: true
 })
 export type BaseUserSessionResultType = z.infer<typeof BaseUserSessionResult>
-export const createUserSession = async (data: BaseUserSessionInputType): Promise<BaseUserSessionResultType> => {
-  const validatedData = BaseUserSessionInput.parse(data)
+export const createUserSession = async (
+  data: BaseUserSessionInputType
+): Promise<BaseUserSessionResultType> => {
+  const validatedData = validate(BaseUserSessionInput, data)
   const userSession = await prisma.userSession.create({
     data: {
       userId: validatedData.userId,

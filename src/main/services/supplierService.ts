@@ -1,8 +1,9 @@
 import { SupplierInputSchema, SupplierResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
+import { validate } from '../../../lib/validate'
 
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 
 export const BaseSupplierInput = SupplierInputSchema.pick({
   name: true,
@@ -26,7 +27,7 @@ export type BaseSupplierResultType = z.infer<typeof BaseSupplierResult>
 export const createSupplier = async (
   data: BaseSupplierInputType
 ): Promise<BaseSupplierResultType> => {
-  const validatedData = BaseSupplierInput.parse(data)
+  const validatedData = validate(BaseSupplierInput,data)
   const supplier = await prisma.supplier.create({
     data: {
       name: validatedData.name,

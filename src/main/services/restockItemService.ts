@@ -1,7 +1,8 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
 import { RestockItemInputSchema, RestockItemResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 export const BaseRestockItemInput = RestockItemInputSchema.omit({
   id: true,
   restock: true,
@@ -13,8 +14,10 @@ export const BaseRestockItemResult = RestockItemResultSchema.omit({
   item: true
 })
 export type BaseRestockItemResultType = z.infer<typeof BaseRestockItemResult>
-export const createRestockItem = async (data: BaseRestockItemInputType): Promise<BaseRestockItemResultType> => {
-  const validatedData = BaseRestockItemInput.parse(data)
+export const createRestockItem = async (
+  data: BaseRestockItemInputType
+): Promise<BaseRestockItemResultType> => {
+  const validatedData = validate(BaseRestockItemInput, data)
   const restockItem = await prisma.restockItem.create({
     data: {
       restockId: validatedData.restockId,

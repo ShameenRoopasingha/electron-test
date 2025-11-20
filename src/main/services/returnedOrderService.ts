@@ -1,7 +1,8 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
 import { ReturnedOrderInputSchema, ReturnedOrderResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 export const BaseReturnedOrderInput = ReturnedOrderInputSchema.omit({
   id: true,
   createdAt: true,
@@ -17,7 +18,7 @@ export type BaseReturnedOrderResultType = z.infer<typeof BaseReturnedOrderResult
 export const createReturnedOrder = async (
   data: BaseReturnedOrderInputType
 ): Promise<BaseReturnedOrderResultType> => {
-  const validatedData = BaseReturnedOrderInput.parse(data)
+  const validatedData = validate(BaseReturnedOrderInput, data)
   const returnedOrder = await prisma.returnedOrder.create({
     data: {
       billId: validatedData.billId,

@@ -1,7 +1,8 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { CategoryInputSchema, CategoryResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+import { validate } from '../../../lib/validate'
+const prisma = getPrisma()
 export const BaseCategoryInput = CategoryInputSchema.pick({
   name: true,
   description: true
@@ -16,7 +17,7 @@ export type BaseCategoryResultType = z.infer<typeof BaseCategoryResult>
 export const createCategory = async (
   data: BaseCategoryInputType
 ): Promise<BaseCategoryResultType> => {
-  const validatedData = BaseCategoryInput.parse(data)
+  const validatedData = validate(BaseCategoryInput, data)
   const category = await prisma.category.create({
     data: {
       name: validatedData.name,

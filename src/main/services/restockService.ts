@@ -1,7 +1,15 @@
-import { PrismaClient } from 'generated/prisma/client'
-import { RestockInputSchema, RestockResultSchema } from '../../generated/zod/schemas' // Adjusted path
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
+import { RestockInputSchema, RestockResultSchema } from '../../generated/zod/schemas'
 import { z } from 'zod'
-const prisma = new PrismaClient()
+
+const prisma = getPrisma()
+
+/* ──────────────────────────────────────────────
+ * SCHEMAS (Base input + output)
+ * Omit relations & auto fields
+ * ────────────────────────────────────────────── */
+
 export const BaseRestockInput = RestockInputSchema.omit({
   id: true,
   createdAt: true,
@@ -9,50 +17,89 @@ export const BaseRestockInput = RestockInputSchema.omit({
   user: true,
   items: true
 })
+
 export type BaseRestockInputType = z.infer<typeof BaseRestockInput>
+
 export const BaseRestockResult = RestockResultSchema.omit({
   supplier: true,
   user: true,
   items: true
 })
+
 export type BaseRestockResultType = z.infer<typeof BaseRestockResult>
+
+/* ──────────────────────────────────────────────
+ * CREATE
+ * ────────────────────────────────────────────── */
+
 export const createRestock = async (data: BaseRestockInputType): Promise<BaseRestockResultType> => {
-  const validatedData = BaseRestockInput.parse(data)
+  const validated = validate(BaseRestockInput, data)
+
   const restock = await prisma.restock.create({
     data: {
-      supplierId: validatedData.supplierId,
-      userId: validatedData.userId,
-      totalCost: validatedData.totalCost
+      supplierId: validated.supplierId,
+      userId: validated.userId,
+      totalCost: validated.totalCost
     }
   })
+
   return BaseRestockResult.parse(restock)
 }
+
+/* ──────────────────────────────────────────────
+ * GET BY ID
+ * ────────────────────────────────────────────── */
+
 export const getRestockById = async (id: number): Promise<BaseRestockResultType> => {
-  const restockById = await prisma.restock.findUnique({
+  const restock = await prisma.restock.findUnique({
     where: { id }
   })
-  if (!restockById) {
+
+  if (!restock) {
     throw new Error('Restock not found')
   }
-  return BaseRestockResult.parse(restockById)
+
+  return BaseRestockResult.parse(restock)
 }
+
+/* ──────────────────────────────────────────────
+ * GET ALL
+ * ────────────────────────────────────────────── */
+
 export const getAllRestocks = async (): Promise<BaseRestockResultType[]> => {
-  const restocks = await prisma.restock.findMany()
-  return restocks.map((restock) => BaseRestockResult.parse(restock))
+  const restocks = await prisma.restock.findMany({
+    orderBy: { id: 'desc' }
+  })
+
+  return restocks.map((r) => BaseRestockResult.parse(r))
 }
+
+/* ──────────────────────────────────────────────
+ * UPDATE (safe partial update)
+ * ────────────────────────────────────────────── */
+
 export const updateRestock = async (
   id: number,
   data: Partial<BaseRestockInputType>
 ): Promise<BaseRestockResultType> => {
-  const validatedData = BaseRestockInput.partial().parse(data)
-  const updatedRestock = await prisma.restock.update({
+  const validated = BaseRestockInput.partial().parse(data)
+
+  const updated = await prisma.restock.update({
     where: { id },
-    data: { ...validatedData }
+    data: validated
   })
-  return BaseRestockResult.parse(updatedRestock)
+
+  return BaseRestockResult.parse(updated)
 }
-export const deleteRestock = async (id: number): Promise<void> => {
+
+/* ──────────────────────────────────────────────
+ * DELETE
+ * ────────────────────────────────────────────── */
+
+export const deleteRestock = async (id: number): Promise<{ id: number }> => {
   await prisma.restock.delete({
     where: { id }
   })
+
+  return { id }
 }

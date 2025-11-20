@@ -1,7 +1,8 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
 import { CheckoutInputSchema, CheckoutResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 export const BaseCheckoutInput = CheckoutInputSchema.omit({
   id: true,
   createdAt: true,
@@ -18,7 +19,7 @@ export type BaseCheckoutResultType = z.infer<typeof BaseCheckoutResult>
 export const createCheckout = async (
   data: BaseCheckoutInputType
 ): Promise<BaseCheckoutResultType> => {
-  const validatedData = BaseCheckoutInput.parse(data)
+  const validatedData = validate(BaseCheckoutInput, data)
   const checkout = await prisma.checkout.create({
     data: {
       billId: validatedData.billId,

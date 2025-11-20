@@ -1,7 +1,9 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { getPrisma } from '../../../lib/utils'
 import { BillInputSchema, BillResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+import { validate } from '../../../lib/validate'
+
+const prisma = getPrisma()
 export const BaseBillInput = BillInputSchema.omit({
   id: true,
   createdAt: true,
@@ -20,7 +22,7 @@ export const BaseBillResult = BillResultSchema.omit({
 })
 export type BaseBillResultType = z.infer<typeof BaseBillResult>
 export const createBill = async (data: BaseBillInputType): Promise<BaseBillResultType> => {
-  const validatedData = BaseBillInput.parse(data)
+  const validatedData = validate(BaseBillInput,data);
   const bill = await prisma.bill.create({
     data: {
       userId: validatedData.userId,

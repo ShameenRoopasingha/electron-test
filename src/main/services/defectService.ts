@@ -1,7 +1,8 @@
-import { PrismaClient } from 'generated/prisma/client'
+import { validate } from '../../../lib/validate'
+import { getPrisma } from '../../../lib/utils'
 import { DefectInputSchema, DefectResultSchema } from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 export const BaseDefectInput = DefectInputSchema.omit({
   id: true,
   createdAt: true,
@@ -15,7 +16,7 @@ export const BaseDefectResult = DefectResultSchema.omit({
 })
 export type BaseDefectResultType = z.infer<typeof BaseDefectResult>
 export const createDefect = async (data: BaseDefectInputType): Promise<BaseDefectResultType> => {
-  const validatedData = BaseDefectInput.parse(data)
+  const validatedData = validate(BaseDefectInput, data)
   const defect = await prisma.defect.create({
     data: {
       itemId: validatedData.itemId,
