@@ -12,6 +12,7 @@ export const RestockGroupByResultSchema = z.array(z.object({
     totalCost: z.number(),
     createdAt: z.number(),
     supplier: z.number(),
+    user: z.number(),
     items: z.number()
   }).optional(),
   _sum: z.object({

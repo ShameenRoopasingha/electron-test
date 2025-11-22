@@ -1,3 +1,16 @@
+export { BusinessDetailsFindUniqueResultSchema } from './BusinessDetailsFindUniqueResult.schema';
+export { BusinessDetailsFindFirstResultSchema } from './BusinessDetailsFindFirstResult.schema';
+export { BusinessDetailsFindManyResultSchema } from './BusinessDetailsFindManyResult.schema';
+export { BusinessDetailsCreateResultSchema } from './BusinessDetailsCreateResult.schema';
+export { BusinessDetailsCreateManyResultSchema } from './BusinessDetailsCreateManyResult.schema';
+export { BusinessDetailsUpdateResultSchema } from './BusinessDetailsUpdateResult.schema';
+export { BusinessDetailsUpdateManyResultSchema } from './BusinessDetailsUpdateManyResult.schema';
+export { BusinessDetailsUpsertResultSchema } from './BusinessDetailsUpsertResult.schema';
+export { BusinessDetailsDeleteResultSchema } from './BusinessDetailsDeleteResult.schema';
+export { BusinessDetailsDeleteManyResultSchema } from './BusinessDetailsDeleteManyResult.schema';
+export { BusinessDetailsAggregateResultSchema } from './BusinessDetailsAggregateResult.schema';
+export { BusinessDetailsGroupByResultSchema } from './BusinessDetailsGroupByResult.schema';
+export { BusinessDetailsCountResultSchema } from './BusinessDetailsCountResult.schema';
 export { UserFindUniqueResultSchema } from './UserFindUniqueResult.schema';
 export { UserFindFirstResultSchema } from './UserFindFirstResult.schema';
 export { UserFindManyResultSchema } from './UserFindManyResult.schema';

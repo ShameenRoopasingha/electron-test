@@ -11,8 +11,9 @@ const makeSchema = () => z.object({
   company: z.string(),
   address: z.string(),
   createdAt: z.coerce.date().optional(),
-  items: z.lazy(() => ItemUncheckedCreateNestedManyWithoutSupplierInputObjectSchema),
-  restocks: z.lazy(() => RestockUncheckedCreateNestedManyWithoutSupplierInputObjectSchema)
+  updatedAt: z.coerce.date().optional(),
+  items: z.lazy(() => ItemUncheckedCreateNestedManyWithoutSupplierInputObjectSchema).optional(),
+  restocks: z.lazy(() => RestockUncheckedCreateNestedManyWithoutSupplierInputObjectSchema).optional()
 }).strict();
 export const SupplierUncheckedCreateInputObjectSchema: z.ZodType<Prisma.SupplierUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.SupplierUncheckedCreateInput>;
 export const SupplierUncheckedCreateInputObjectZodSchema = makeSchema();

@@ -1,5 +1,15 @@
 import { getPrisma } from '../../../lib/utils'
-import { UserInputSchema, UserResultSchema } from 'generated/zod/schemas'
+import {
+  UserCreateInput,
+  UserUpdateInput,
+  UserWhereUniqueInput,
+  UserWhereInput,
+  UserOrderByWithRelationInput,
+  UserSelect,
+  UserInclude,
+  UserInclude
+} from 'generated/prisma/models'
+
 import z from 'zod'
 import bcrypt from 'bcrypt'
 import { validate } from '../../../lib/validate'
@@ -7,7 +17,7 @@ import { validate } from '../../../lib/validate'
 const prisma = getPrisma()
 
 // ✅ Base schemas (omit auto-managed and relational fields)
-export const BaseUserInput = UserInputSchema.omit({
+export const BaseUserInput = UserCreateInput.omit({
   id: true,
   createdAt: true,
   updatedAt: true,

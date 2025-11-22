@@ -16,6 +16,7 @@ export const RestockFindFirstSelectSchema: z.ZodType<Prisma.RestockSelect> = z.o
     totalCost: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     supplier: z.boolean().optional(),
+    user: z.boolean().optional(),
     items: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.RestockSelect>;
@@ -27,10 +28,11 @@ export const RestockFindFirstSelectZodSchema = z.object({
     totalCost: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     supplier: z.boolean().optional(),
+    user: z.boolean().optional(),
     items: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 
-export const RestockFindFirstSchema: z.ZodType<Prisma.RestockFindFirstArgs> = z.object({ select: RestockFindFirstSelectSchema.optional(), include: RestockIncludeObjectSchema.optional(), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.RestockFindFirstArgs>;
+export const RestockFindFirstSchema: z.ZodType<Prisma.RestockFindFirstArgs> = z.object({ select: RestockFindFirstSelectSchema.optional(), include: z.lazy(() => RestockIncludeObjectSchema.optional()), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.RestockFindFirstArgs>;
 
-export const RestockFindFirstZodSchema = z.object({ select: RestockFindFirstSelectSchema.optional(), include: RestockIncludeObjectSchema.optional(), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict();
+export const RestockFindFirstZodSchema = z.object({ select: RestockFindFirstSelectSchema.optional(), include: z.lazy(() => RestockIncludeObjectSchema.optional()), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict();

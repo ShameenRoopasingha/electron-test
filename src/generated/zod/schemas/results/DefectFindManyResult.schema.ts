@@ -7,7 +7,8 @@ export const DefectFindManyResultSchema = z.object({
   reason: z.string(),
   reportedBy: z.number().int(),
   createdAt: z.date(),
-  item: z.unknown().optional()
+  item: z.unknown().optional(),
+  user: z.unknown()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

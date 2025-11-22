@@ -11,8 +11,9 @@ const makeSchema = () => z.object({
   paymentMethod: z.string(),
   paymentStatus: z.string().optional(),
   createdAt: z.coerce.date().optional(),
-  checkouts: z.lazy(() => CheckoutUncheckedCreateNestedManyWithoutBillInputObjectSchema),
-  returnedOrders: z.lazy(() => ReturnedOrderUncheckedCreateNestedManyWithoutBillInputObjectSchema)
+  updatedAt: z.coerce.date().optional(),
+  checkouts: z.lazy(() => CheckoutUncheckedCreateNestedManyWithoutBillInputObjectSchema).optional(),
+  returnedOrders: z.lazy(() => ReturnedOrderUncheckedCreateNestedManyWithoutBillInputObjectSchema).optional()
 }).strict();
 export const BillUncheckedCreateInputObjectSchema: z.ZodType<Prisma.BillUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.BillUncheckedCreateInput>;
 export const BillUncheckedCreateInputObjectZodSchema = makeSchema();

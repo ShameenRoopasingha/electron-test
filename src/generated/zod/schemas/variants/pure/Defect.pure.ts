@@ -7,7 +7,8 @@ export const DefectModelSchema = z.object({
     reason: z.string(),
     reportedBy: z.number().int(),
     createdAt: z.date(),
-    item: z.unknown().nullable()
+    item: z.unknown().nullable(),
+    user: z.unknown()
 }).strict();
 
 export type DefectPureType = z.infer<typeof DefectModelSchema>;

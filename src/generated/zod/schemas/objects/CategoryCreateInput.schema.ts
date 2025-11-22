@@ -5,7 +5,7 @@ import { ItemCreateNestedManyWithoutCategoryInputObjectSchema as ItemCreateNeste
 const makeSchema = () => z.object({
   name: z.string(),
   description: z.string().optional().nullable(),
-  items: z.lazy(() => ItemCreateNestedManyWithoutCategoryInputObjectSchema)
+  items: z.lazy(() => ItemCreateNestedManyWithoutCategoryInputObjectSchema).optional()
 }).strict();
 export const CategoryCreateInputObjectSchema: z.ZodType<Prisma.CategoryCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.CategoryCreateInput>;
 export const CategoryCreateInputObjectZodSchema = makeSchema();

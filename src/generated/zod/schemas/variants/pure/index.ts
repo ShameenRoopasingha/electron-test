@@ -3,6 +3,7 @@
  * Auto-generated - do not edit manually
  */
 
+export { BusinessDetailsModelSchema } from './BusinessDetails.pure';
 export { UserModelSchema } from './User.pure';
 export { CustomerModelSchema } from './Customer.pure';
 export { SupplierModelSchema } from './Supplier.pure';

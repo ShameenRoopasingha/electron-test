@@ -2,16 +2,21 @@ import * as z from 'zod';
 import type { Prisma } from '../../../prisma/client';
 import { IntFieldUpdateOperationsInputObjectSchema as IntFieldUpdateOperationsInputObjectSchema } from './IntFieldUpdateOperationsInput.schema';
 import { StringFieldUpdateOperationsInputObjectSchema as StringFieldUpdateOperationsInputObjectSchema } from './StringFieldUpdateOperationsInput.schema';
+import { RoleSchema } from '../enums/Role.schema';
+import { EnumRoleFieldUpdateOperationsInputObjectSchema as EnumRoleFieldUpdateOperationsInputObjectSchema } from './EnumRoleFieldUpdateOperationsInput.schema';
 import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
 import { UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema as UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './UserSessionUncheckedUpdateManyWithoutUserNestedInput.schema';
-import { ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema as ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './ExpiredItemUncheckedUpdateManyWithoutUserNestedInput.schema'
+import { ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema as ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './ExpiredItemUncheckedUpdateManyWithoutUserNestedInput.schema';
+import { RestockUncheckedUpdateManyWithoutUserNestedInputObjectSchema as RestockUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './RestockUncheckedUpdateManyWithoutUserNestedInput.schema';
+import { DefectUncheckedUpdateManyWithoutUserNestedInputObjectSchema as DefectUncheckedUpdateManyWithoutUserNestedInputObjectSchema } from './DefectUncheckedUpdateManyWithoutUserNestedInput.schema';
+import { BusinessDetailsUncheckedUpdateOneWithoutOwnerNestedInputObjectSchema as BusinessDetailsUncheckedUpdateOneWithoutOwnerNestedInputObjectSchema } from './BusinessDetailsUncheckedUpdateOneWithoutOwnerNestedInput.schema'
 
 const makeSchema = () => z.object({
   id: z.union([z.number().int(), z.lazy(() => IntFieldUpdateOperationsInputObjectSchema)]).optional(),
   username: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   email: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   password: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
-  role: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
+  role: z.union([RoleSchema, z.lazy(() => EnumRoleFieldUpdateOperationsInputObjectSchema)]).optional(),
   fname: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   lname: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
   phone: z.union([z.string(), z.lazy(() => StringFieldUpdateOperationsInputObjectSchema)]).optional(),
@@ -20,7 +25,10 @@ const makeSchema = () => z.object({
   createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   updatedAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
   sessions: z.lazy(() => UserSessionUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
-  expiredItems: z.lazy(() => ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional()
+  expiredItems: z.lazy(() => ExpiredItemUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+  restocks: z.lazy(() => RestockUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+  defects: z.lazy(() => DefectUncheckedUpdateManyWithoutUserNestedInputObjectSchema).optional(),
+  business: z.lazy(() => BusinessDetailsUncheckedUpdateOneWithoutOwnerNestedInputObjectSchema).optional()
 }).strict();
 export const UserUncheckedUpdateWithoutBillsInputObjectSchema: z.ZodType<Prisma.UserUncheckedUpdateWithoutBillsInput> = makeSchema() as unknown as z.ZodType<Prisma.UserUncheckedUpdateWithoutBillsInput>;
 export const UserUncheckedUpdateWithoutBillsInputObjectZodSchema = makeSchema();

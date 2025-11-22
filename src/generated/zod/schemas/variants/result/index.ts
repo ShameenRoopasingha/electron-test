@@ -3,6 +3,7 @@
  * Auto-generated - do not edit manually
  */
 
+export { BusinessDetailsResultSchema } from './BusinessDetails.result';
 export { UserResultSchema } from './User.result';
 export { CustomerResultSchema } from './Customer.result';
 export { SupplierResultSchema } from './Supplier.result';

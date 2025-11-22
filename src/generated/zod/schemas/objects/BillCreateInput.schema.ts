@@ -10,10 +10,11 @@ const makeSchema = () => z.object({
   paymentMethod: z.string(),
   paymentStatus: z.string().optional(),
   createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
   user: z.lazy(() => UserCreateNestedOneWithoutBillsInputObjectSchema),
   customer: z.lazy(() => CustomerCreateNestedOneWithoutBillsInputObjectSchema),
-  checkouts: z.lazy(() => CheckoutCreateNestedManyWithoutBillInputObjectSchema),
-  returnedOrders: z.lazy(() => ReturnedOrderCreateNestedManyWithoutBillInputObjectSchema)
+  checkouts: z.lazy(() => CheckoutCreateNestedManyWithoutBillInputObjectSchema).optional(),
+  returnedOrders: z.lazy(() => ReturnedOrderCreateNestedManyWithoutBillInputObjectSchema).optional()
 }).strict();
 export const BillCreateInputObjectSchema: z.ZodType<Prisma.BillCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.BillCreateInput>;
 export const BillCreateInputObjectZodSchema = makeSchema();

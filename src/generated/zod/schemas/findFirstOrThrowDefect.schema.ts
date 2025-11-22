@@ -16,7 +16,8 @@ export const DefectFindFirstOrThrowSelectSchema: z.ZodType<Prisma.DefectSelect> 
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.DefectSelect>;
 
 export const DefectFindFirstOrThrowSelectZodSchema = z.object({
@@ -26,9 +27,10 @@ export const DefectFindFirstOrThrowSelectZodSchema = z.object({
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict();
 
-export const DefectFindFirstOrThrowSchema: z.ZodType<Prisma.DefectFindFirstOrThrowArgs> = z.object({ select: DefectFindFirstOrThrowSelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindFirstOrThrowArgs>;
+export const DefectFindFirstOrThrowSchema: z.ZodType<Prisma.DefectFindFirstOrThrowArgs> = z.object({ select: DefectFindFirstOrThrowSelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindFirstOrThrowArgs>;
 
-export const DefectFindFirstOrThrowZodSchema = z.object({ select: DefectFindFirstOrThrowSelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();
+export const DefectFindFirstOrThrowZodSchema = z.object({ select: DefectFindFirstOrThrowSelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();

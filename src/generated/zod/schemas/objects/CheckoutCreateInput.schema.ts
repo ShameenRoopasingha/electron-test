@@ -8,6 +8,7 @@ const makeSchema = () => z.object({
   price: z.number(),
   payedAmount: z.number(),
   createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional(),
   bill: z.lazy(() => BillCreateNestedOneWithoutCheckoutsInputObjectSchema),
   item: z.lazy(() => ItemCreateNestedOneWithoutCheckoutsInputObjectSchema)
 }).strict();

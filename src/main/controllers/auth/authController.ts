@@ -9,6 +9,11 @@ ipcMain.handle('auth:login', async (_event, data: LoginInput) => {
   }
 })
 
+ipcMain.handle('auth:OwnerRegister', async (_event, data: LoginInput) => {
+  try {
+    return await loginUser(data)
+  }
+})
 ipcMain.handle('auth:verifyToken', async (_event, token: string): Promise<TokenPayload> => {
   try {
     return await verifyToken(token)

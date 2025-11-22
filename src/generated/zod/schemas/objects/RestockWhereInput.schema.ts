@@ -5,6 +5,8 @@ import { FloatFilterObjectSchema as FloatFilterObjectSchema } from './FloatFilte
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
 import { SupplierScalarRelationFilterObjectSchema as SupplierScalarRelationFilterObjectSchema } from './SupplierScalarRelationFilter.schema';
 import { SupplierWhereInputObjectSchema as SupplierWhereInputObjectSchema } from './SupplierWhereInput.schema';
+import { UserScalarRelationFilterObjectSchema as UserScalarRelationFilterObjectSchema } from './UserScalarRelationFilter.schema';
+import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './UserWhereInput.schema';
 import { RestockItemListRelationFilterObjectSchema as RestockItemListRelationFilterObjectSchema } from './RestockItemListRelationFilter.schema'
 
 const restockwhereinputSchema = z.object({
@@ -17,6 +19,7 @@ const restockwhereinputSchema = z.object({
   totalCost: z.union([z.lazy(() => FloatFilterObjectSchema), z.number()]).optional(),
   createdAt: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   supplier: z.union([z.lazy(() => SupplierScalarRelationFilterObjectSchema), z.lazy(() => SupplierWhereInputObjectSchema)]).optional(),
+  user: z.union([z.lazy(() => UserScalarRelationFilterObjectSchema), z.lazy(() => UserWhereInputObjectSchema)]).optional(),
   items: z.lazy(() => RestockItemListRelationFilterObjectSchema).optional()
 }).strict();
 export const RestockWhereInputObjectSchema: z.ZodType<Prisma.RestockWhereInput> = restockwhereinputSchema as unknown as z.ZodType<Prisma.RestockWhereInput>;

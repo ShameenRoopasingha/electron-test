@@ -9,7 +9,8 @@ const makeSchema = () => z.object({
   quantity: z.number().int(),
   price: z.number(),
   payedAmount: z.number(),
-  createdAt: z.coerce.date().optional()
+  createdAt: z.coerce.date().optional(),
+  updatedAt: z.coerce.date().optional()
 }).strict();
 export const CheckoutUncheckedCreateInputObjectSchema: z.ZodType<Prisma.CheckoutUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.CheckoutUncheckedCreateInput>;
 export const CheckoutUncheckedCreateInputObjectZodSchema = makeSchema();

@@ -8,7 +8,8 @@ const makeSchema = () => z.object({
   phone: z.string(),
   address: z.string(),
   createdAt: z.coerce.date().optional(),
-  bills: z.lazy(() => BillCreateNestedManyWithoutCustomerInputObjectSchema)
+  updatedAt: z.coerce.date().optional(),
+  bills: z.lazy(() => BillCreateNestedManyWithoutCustomerInputObjectSchema).optional()
 }).strict();
 export const CustomerCreateInputObjectSchema: z.ZodType<Prisma.CustomerCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.CustomerCreateInput>;
 export const CustomerCreateInputObjectZodSchema = makeSchema();

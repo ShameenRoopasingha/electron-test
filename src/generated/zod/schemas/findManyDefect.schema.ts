@@ -16,7 +16,8 @@ export const DefectFindManySelectSchema: z.ZodType<Prisma.DefectSelect> = z.obje
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.DefectSelect>;
 
 export const DefectFindManySelectZodSchema = z.object({
@@ -26,9 +27,10 @@ export const DefectFindManySelectZodSchema = z.object({
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict();
 
-export const DefectFindManySchema: z.ZodType<Prisma.DefectFindManyArgs> = z.object({ select: DefectFindManySelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindManyArgs>;
+export const DefectFindManySchema: z.ZodType<Prisma.DefectFindManyArgs> = z.object({ select: DefectFindManySelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindManyArgs>;
 
-export const DefectFindManyZodSchema = z.object({ select: DefectFindManySelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();
+export const DefectFindManyZodSchema = z.object({ select: DefectFindManySelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();

@@ -14,7 +14,10 @@ export const UserAggregateResultSchema = z.object({  _count: z.object({
     updatedAt: z.number(),
     bills: z.number(),
     sessions: z.number(),
-    expiredItems: z.number()
+    expiredItems: z.number(),
+    restocks: z.number(),
+    defects: z.number(),
+    business: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable()
@@ -27,7 +30,6 @@ export const UserAggregateResultSchema = z.object({  _count: z.object({
     username: z.string().nullable(),
     email: z.string().nullable(),
     password: z.string().nullable(),
-    role: z.string().nullable(),
     fname: z.string().nullable(),
     lname: z.string().nullable(),
     phone: z.string().nullable(),
@@ -41,7 +43,6 @@ export const UserAggregateResultSchema = z.object({  _count: z.object({
     username: z.string().nullable(),
     email: z.string().nullable(),
     password: z.string().nullable(),
-    role: z.string().nullable(),
     fname: z.string().nullable(),
     lname: z.string().nullable(),
     phone: z.string().nullable(),

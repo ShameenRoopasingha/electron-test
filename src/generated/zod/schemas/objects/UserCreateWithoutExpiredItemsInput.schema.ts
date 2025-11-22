@@ -1,13 +1,17 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../prisma/client';
+import { RoleSchema } from '../enums/Role.schema';
 import { BillCreateNestedManyWithoutUserInputObjectSchema as BillCreateNestedManyWithoutUserInputObjectSchema } from './BillCreateNestedManyWithoutUserInput.schema';
-import { UserSessionCreateNestedManyWithoutUserInputObjectSchema as UserSessionCreateNestedManyWithoutUserInputObjectSchema } from './UserSessionCreateNestedManyWithoutUserInput.schema'
+import { UserSessionCreateNestedManyWithoutUserInputObjectSchema as UserSessionCreateNestedManyWithoutUserInputObjectSchema } from './UserSessionCreateNestedManyWithoutUserInput.schema';
+import { RestockCreateNestedManyWithoutUserInputObjectSchema as RestockCreateNestedManyWithoutUserInputObjectSchema } from './RestockCreateNestedManyWithoutUserInput.schema';
+import { DefectCreateNestedManyWithoutUserInputObjectSchema as DefectCreateNestedManyWithoutUserInputObjectSchema } from './DefectCreateNestedManyWithoutUserInput.schema';
+import { BusinessDetailsCreateNestedOneWithoutOwnerInputObjectSchema as BusinessDetailsCreateNestedOneWithoutOwnerInputObjectSchema } from './BusinessDetailsCreateNestedOneWithoutOwnerInput.schema'
 
 const makeSchema = () => z.object({
   username: z.string(),
   email: z.string(),
   password: z.string(),
-  role: z.string(),
+  role: RoleSchema.optional(),
   fname: z.string(),
   lname: z.string(),
   phone: z.string(),
@@ -16,7 +20,10 @@ const makeSchema = () => z.object({
   createdAt: z.coerce.date().optional(),
   updatedAt: z.coerce.date().optional(),
   bills: z.lazy(() => BillCreateNestedManyWithoutUserInputObjectSchema).optional(),
-  sessions: z.lazy(() => UserSessionCreateNestedManyWithoutUserInputObjectSchema).optional()
+  sessions: z.lazy(() => UserSessionCreateNestedManyWithoutUserInputObjectSchema).optional(),
+  restocks: z.lazy(() => RestockCreateNestedManyWithoutUserInputObjectSchema).optional(),
+  defects: z.lazy(() => DefectCreateNestedManyWithoutUserInputObjectSchema).optional(),
+  business: z.lazy(() => BusinessDetailsCreateNestedOneWithoutOwnerInputObjectSchema).optional()
 }).strict();
 export const UserCreateWithoutExpiredItemsInputObjectSchema: z.ZodType<Prisma.UserCreateWithoutExpiredItemsInput> = makeSchema() as unknown as z.ZodType<Prisma.UserCreateWithoutExpiredItemsInput>;
 export const UserCreateWithoutExpiredItemsInputObjectZodSchema = makeSchema();

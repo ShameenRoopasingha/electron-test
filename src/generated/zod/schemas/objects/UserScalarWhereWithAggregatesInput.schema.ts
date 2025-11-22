@@ -2,6 +2,8 @@ import * as z from 'zod';
 import type { Prisma } from '../../../prisma/client';
 import { IntWithAggregatesFilterObjectSchema as IntWithAggregatesFilterObjectSchema } from './IntWithAggregatesFilter.schema';
 import { StringWithAggregatesFilterObjectSchema as StringWithAggregatesFilterObjectSchema } from './StringWithAggregatesFilter.schema';
+import { EnumRoleWithAggregatesFilterObjectSchema as EnumRoleWithAggregatesFilterObjectSchema } from './EnumRoleWithAggregatesFilter.schema';
+import { RoleSchema } from '../enums/Role.schema';
 import { DateTimeWithAggregatesFilterObjectSchema as DateTimeWithAggregatesFilterObjectSchema } from './DateTimeWithAggregatesFilter.schema'
 
 const userscalarwherewithaggregatesinputSchema = z.object({
@@ -12,7 +14,7 @@ const userscalarwherewithaggregatesinputSchema = z.object({
   username: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   email: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   password: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
-  role: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
+  role: z.union([z.lazy(() => EnumRoleWithAggregatesFilterObjectSchema), RoleSchema]).optional(),
   fname: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   lname: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),
   phone: z.union([z.lazy(() => StringWithAggregatesFilterObjectSchema), z.string()]).optional(),

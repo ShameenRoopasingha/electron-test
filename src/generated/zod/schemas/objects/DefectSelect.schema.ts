@@ -1,6 +1,7 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../prisma/client';
-import { ItemArgsObjectSchema as ItemArgsObjectSchema } from './ItemArgs.schema'
+import { ItemArgsObjectSchema as ItemArgsObjectSchema } from './ItemArgs.schema';
+import { UserArgsObjectSchema as UserArgsObjectSchema } from './UserArgs.schema'
 
 const makeSchema = () => z.object({
   id: z.boolean().optional(),
@@ -9,7 +10,8 @@ const makeSchema = () => z.object({
   reason: z.boolean().optional(),
   reportedBy: z.boolean().optional(),
   createdAt: z.boolean().optional(),
-  item: z.union([z.boolean(), z.lazy(() => ItemArgsObjectSchema)]).optional()
+  item: z.union([z.boolean(), z.lazy(() => ItemArgsObjectSchema)]).optional(),
+  user: z.union([z.boolean(), z.lazy(() => UserArgsObjectSchema)]).optional()
 }).strict();
 export const DefectSelectObjectSchema: z.ZodType<Prisma.DefectSelect> = makeSchema() as unknown as z.ZodType<Prisma.DefectSelect>;
 export const DefectSelectObjectZodSchema = makeSchema();

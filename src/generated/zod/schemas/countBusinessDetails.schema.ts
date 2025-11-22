@@ -1,0 +1,10 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { BusinessDetailsOrderByWithRelationInputObjectSchema as BusinessDetailsOrderByWithRelationInputObjectSchema } from './objects/BusinessDetailsOrderByWithRelationInput.schema';
+import { BusinessDetailsWhereInputObjectSchema as BusinessDetailsWhereInputObjectSchema } from './objects/BusinessDetailsWhereInput.schema';
+import { BusinessDetailsWhereUniqueInputObjectSchema as BusinessDetailsWhereUniqueInputObjectSchema } from './objects/BusinessDetailsWhereUniqueInput.schema';
+import { BusinessDetailsCountAggregateInputObjectSchema as BusinessDetailsCountAggregateInputObjectSchema } from './objects/BusinessDetailsCountAggregateInput.schema';
+
+export const BusinessDetailsCountSchema: z.ZodType<Prisma.BusinessDetailsCountArgs> = z.object({ orderBy: z.union([BusinessDetailsOrderByWithRelationInputObjectSchema, BusinessDetailsOrderByWithRelationInputObjectSchema.array()]).optional(), where: BusinessDetailsWhereInputObjectSchema.optional(), cursor: BusinessDetailsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), BusinessDetailsCountAggregateInputObjectSchema ]).optional() }).strict() as unknown as z.ZodType<Prisma.BusinessDetailsCountArgs>;
+
+export const BusinessDetailsCountZodSchema = z.object({ orderBy: z.union([BusinessDetailsOrderByWithRelationInputObjectSchema, BusinessDetailsOrderByWithRelationInputObjectSchema.array()]).optional(), where: BusinessDetailsWhereInputObjectSchema.optional(), cursor: BusinessDetailsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), select: z.union([ z.literal(true), BusinessDetailsCountAggregateInputObjectSchema ]).optional() }).strict();

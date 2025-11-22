@@ -18,11 +18,12 @@ const makeSchema = () => z.object({
   quantityInStock: z.number().int(),
   reorder_level: z.number().int(),
   createdAt: z.coerce.date().optional(),
-  checkouts: z.lazy(() => CheckoutUncheckedCreateNestedManyWithoutItemInputObjectSchema),
-  returnedOrders: z.lazy(() => ReturnedOrderUncheckedCreateNestedManyWithoutItemInputObjectSchema),
-  defects: z.lazy(() => DefectUncheckedCreateNestedManyWithoutItemInputObjectSchema),
-  expiredItems: z.lazy(() => ExpiredItemUncheckedCreateNestedManyWithoutItemInputObjectSchema),
-  restockItems: z.lazy(() => RestockItemUncheckedCreateNestedManyWithoutItemInputObjectSchema)
+  updatedAt: z.coerce.date().optional(),
+  checkouts: z.lazy(() => CheckoutUncheckedCreateNestedManyWithoutItemInputObjectSchema).optional(),
+  returnedOrders: z.lazy(() => ReturnedOrderUncheckedCreateNestedManyWithoutItemInputObjectSchema).optional(),
+  defects: z.lazy(() => DefectUncheckedCreateNestedManyWithoutItemInputObjectSchema).optional(),
+  expiredItems: z.lazy(() => ExpiredItemUncheckedCreateNestedManyWithoutItemInputObjectSchema).optional(),
+  restockItems: z.lazy(() => RestockItemUncheckedCreateNestedManyWithoutItemInputObjectSchema).optional()
 }).strict();
 export const ItemUncheckedCreateInputObjectSchema: z.ZodType<Prisma.ItemUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.ItemUncheckedCreateInput>;
 export const ItemUncheckedCreateInputObjectZodSchema = makeSchema();

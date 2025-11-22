@@ -6,5 +6,6 @@ export const RestockFindFirstResultSchema = z.nullable(z.object({
   totalCost: z.number(),
   createdAt: z.date(),
   supplier: z.unknown(),
+  user: z.unknown(),
   items: z.array(z.unknown())
 }));

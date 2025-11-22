@@ -8,7 +8,7 @@ const makeSchema = () => z.object({
   userId: z.number().int(),
   totalCost: z.number(),
   createdAt: z.coerce.date().optional(),
-  items: z.lazy(() => RestockItemUncheckedCreateNestedManyWithoutRestockInputObjectSchema)
+  items: z.lazy(() => RestockItemUncheckedCreateNestedManyWithoutRestockInputObjectSchema).optional()
 }).strict();
 export const RestockUncheckedCreateInputObjectSchema: z.ZodType<Prisma.RestockUncheckedCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.RestockUncheckedCreateInput>;
 export const RestockUncheckedCreateInputObjectZodSchema = makeSchema();

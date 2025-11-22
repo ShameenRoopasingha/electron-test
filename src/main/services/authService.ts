@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { getPrisma } from '../../../lib/utils'
-import { UserInputSchema } from 'generated/zod/schemas'
+import { UserInputSchema } from ''
 import { BaseUserResult } from './userService'
 import { z } from 'zod'
 
@@ -14,6 +14,14 @@ export const LoginSchema = UserInputSchema.pick({
   password: true
 })
 export type LoginInput = z.infer<typeof LoginSchema>
+
+
+export const OwnerRegister = UserInputSchema.pick({
+  username: true,
+  password: true,
+  email: true,
+
+})
 
 export interface LoginResult {
   token: string

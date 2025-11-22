@@ -16,6 +16,7 @@ export const RestockFindManySelectSchema: z.ZodType<Prisma.RestockSelect> = z.ob
     totalCost: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     supplier: z.boolean().optional(),
+    user: z.boolean().optional(),
     items: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.RestockSelect>;
@@ -27,10 +28,11 @@ export const RestockFindManySelectZodSchema = z.object({
     totalCost: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     supplier: z.boolean().optional(),
+    user: z.boolean().optional(),
     items: z.boolean().optional(),
     _count: z.boolean().optional()
   }).strict();
 
-export const RestockFindManySchema: z.ZodType<Prisma.RestockFindManyArgs> = z.object({ select: RestockFindManySelectSchema.optional(), include: RestockIncludeObjectSchema.optional(), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.RestockFindManyArgs>;
+export const RestockFindManySchema: z.ZodType<Prisma.RestockFindManyArgs> = z.object({ select: RestockFindManySelectSchema.optional(), include: z.lazy(() => RestockIncludeObjectSchema.optional()), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.RestockFindManyArgs>;
 
-export const RestockFindManyZodSchema = z.object({ select: RestockFindManySelectSchema.optional(), include: RestockIncludeObjectSchema.optional(), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict();
+export const RestockFindManyZodSchema = z.object({ select: RestockFindManySelectSchema.optional(), include: z.lazy(() => RestockIncludeObjectSchema.optional()), orderBy: z.union([RestockOrderByWithRelationInputObjectSchema, RestockOrderByWithRelationInputObjectSchema.array()]).optional(), where: RestockWhereInputObjectSchema.optional(), cursor: RestockWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([RestockScalarFieldEnumSchema, RestockScalarFieldEnumSchema.array()]).optional() }).strict();

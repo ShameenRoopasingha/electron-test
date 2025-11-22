@@ -16,7 +16,8 @@ export const DefectFindFirstSelectSchema: z.ZodType<Prisma.DefectSelect> = z.obj
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict() as unknown as z.ZodType<Prisma.DefectSelect>;
 
 export const DefectFindFirstSelectZodSchema = z.object({
@@ -26,9 +27,10 @@ export const DefectFindFirstSelectZodSchema = z.object({
     reason: z.boolean().optional(),
     reportedBy: z.boolean().optional(),
     createdAt: z.boolean().optional(),
-    item: z.boolean().optional()
+    item: z.boolean().optional(),
+    user: z.boolean().optional()
   }).strict();
 
-export const DefectFindFirstSchema: z.ZodType<Prisma.DefectFindFirstArgs> = z.object({ select: DefectFindFirstSelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindFirstArgs>;
+export const DefectFindFirstSchema: z.ZodType<Prisma.DefectFindFirstArgs> = z.object({ select: DefectFindFirstSelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.DefectFindFirstArgs>;
 
-export const DefectFindFirstZodSchema = z.object({ select: DefectFindFirstSelectSchema.optional(), include: DefectIncludeObjectSchema.optional(), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();
+export const DefectFindFirstZodSchema = z.object({ select: DefectFindFirstSelectSchema.optional(), include: z.lazy(() => DefectIncludeObjectSchema.optional()), orderBy: z.union([DefectOrderByWithRelationInputObjectSchema, DefectOrderByWithRelationInputObjectSchema.array()]).optional(), where: DefectWhereInputObjectSchema.optional(), cursor: DefectWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([DefectScalarFieldEnumSchema, DefectScalarFieldEnumSchema.array()]).optional() }).strict();

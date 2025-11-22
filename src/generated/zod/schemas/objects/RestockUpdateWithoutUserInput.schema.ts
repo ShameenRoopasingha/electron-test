@@ -1,0 +1,15 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+import { FloatFieldUpdateOperationsInputObjectSchema as FloatFieldUpdateOperationsInputObjectSchema } from './FloatFieldUpdateOperationsInput.schema';
+import { DateTimeFieldUpdateOperationsInputObjectSchema as DateTimeFieldUpdateOperationsInputObjectSchema } from './DateTimeFieldUpdateOperationsInput.schema';
+import { SupplierUpdateOneRequiredWithoutRestocksNestedInputObjectSchema as SupplierUpdateOneRequiredWithoutRestocksNestedInputObjectSchema } from './SupplierUpdateOneRequiredWithoutRestocksNestedInput.schema';
+import { RestockItemUpdateManyWithoutRestockNestedInputObjectSchema as RestockItemUpdateManyWithoutRestockNestedInputObjectSchema } from './RestockItemUpdateManyWithoutRestockNestedInput.schema'
+
+const makeSchema = () => z.object({
+  totalCost: z.union([z.number(), z.lazy(() => FloatFieldUpdateOperationsInputObjectSchema)]).optional(),
+  createdAt: z.union([z.coerce.date(), z.lazy(() => DateTimeFieldUpdateOperationsInputObjectSchema)]).optional(),
+  supplier: z.lazy(() => SupplierUpdateOneRequiredWithoutRestocksNestedInputObjectSchema).optional(),
+  items: z.lazy(() => RestockItemUpdateManyWithoutRestockNestedInputObjectSchema).optional()
+}).strict();
+export const RestockUpdateWithoutUserInputObjectSchema: z.ZodType<Prisma.RestockUpdateWithoutUserInput> = makeSchema() as unknown as z.ZodType<Prisma.RestockUpdateWithoutUserInput>;
+export const RestockUpdateWithoutUserInputObjectZodSchema = makeSchema();

@@ -3,6 +3,7 @@
  * Auto-generated - do not edit manually
  */
 
+export { BusinessDetailsInputSchema } from './BusinessDetails.input';
 export { UserInputSchema } from './User.input';
 export { CustomerInputSchema } from './Customer.input';
 export { SupplierInputSchema } from './Supplier.input';

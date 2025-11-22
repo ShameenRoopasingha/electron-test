@@ -10,8 +10,9 @@ const makeSchema = () => z.object({
   company: z.string(),
   address: z.string(),
   createdAt: z.coerce.date().optional(),
-  items: z.lazy(() => ItemCreateNestedManyWithoutSupplierInputObjectSchema),
-  restocks: z.lazy(() => RestockCreateNestedManyWithoutSupplierInputObjectSchema)
+  updatedAt: z.coerce.date().optional(),
+  items: z.lazy(() => ItemCreateNestedManyWithoutSupplierInputObjectSchema).optional(),
+  restocks: z.lazy(() => RestockCreateNestedManyWithoutSupplierInputObjectSchema).optional()
 }).strict();
 export const SupplierCreateInputObjectSchema: z.ZodType<Prisma.SupplierCreateInput> = makeSchema() as unknown as z.ZodType<Prisma.SupplierCreateInput>;
 export const SupplierCreateInputObjectZodSchema = makeSchema();

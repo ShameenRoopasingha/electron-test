@@ -1,0 +1,9 @@
+import * as z from 'zod';
+import type { Prisma } from '../../../prisma/client';
+import { RestockWhereInputObjectSchema as RestockWhereInputObjectSchema } from './RestockWhereInput.schema'
+
+const makeSchema = () => z.object({
+  where: z.lazy(() => RestockWhereInputObjectSchema).optional()
+}).strict();
+export const UserCountOutputTypeCountRestocksArgsObjectSchema = makeSchema();
+export const UserCountOutputTypeCountRestocksArgsObjectZodSchema = makeSchema();

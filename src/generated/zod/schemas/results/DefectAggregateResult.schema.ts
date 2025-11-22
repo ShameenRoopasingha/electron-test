@@ -6,7 +6,8 @@ export const DefectAggregateResultSchema = z.object({  _count: z.object({
     reason: z.number(),
     reportedBy: z.number(),
     createdAt: z.number(),
-    item: z.number()
+    item: z.number(),
+    user: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable(),

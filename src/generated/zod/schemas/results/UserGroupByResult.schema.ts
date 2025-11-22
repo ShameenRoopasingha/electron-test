@@ -4,7 +4,6 @@ export const UserGroupByResultSchema = z.array(z.object({
   username: z.string(),
   email: z.string(),
   password: z.string(),
-  role: z.string(),
   fname: z.string(),
   lname: z.string(),
   phone: z.string(),
@@ -27,7 +26,10 @@ export const UserGroupByResultSchema = z.array(z.object({
     updatedAt: z.number(),
     bills: z.number(),
     sessions: z.number(),
-    expiredItems: z.number()
+    expiredItems: z.number(),
+    restocks: z.number(),
+    defects: z.number(),
+    business: z.number()
   }).optional(),
   _sum: z.object({
     id: z.number().nullable()
@@ -40,7 +42,6 @@ export const UserGroupByResultSchema = z.array(z.object({
     username: z.string().nullable(),
     email: z.string().nullable(),
     password: z.string().nullable(),
-    role: z.string().nullable(),
     fname: z.string().nullable(),
     lname: z.string().nullable(),
     phone: z.string().nullable(),
@@ -54,7 +55,6 @@ export const UserGroupByResultSchema = z.array(z.object({
     username: z.string().nullable(),
     email: z.string().nullable(),
     password: z.string().nullable(),
-    role: z.string().nullable(),
     fname: z.string().nullable(),
     lname: z.string().nullable(),
     phone: z.string().nullable(),

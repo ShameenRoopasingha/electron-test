@@ -1,13 +1,13 @@
 import * as z from 'zod';
 import type { Prisma } from '../../../prisma/client';
-
+import { RoleSchema } from '../enums/Role.schema'
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
   username: z.string(),
   email: z.string(),
   password: z.string(),
-  role: z.string(),
+  role: RoleSchema.optional(),
   fname: z.string(),
   lname: z.string(),
   phone: z.string(),

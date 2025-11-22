@@ -7,7 +7,8 @@ export const DefectInputSchema = z.object({
     reason: z.string(),
     reportedBy: z.number().int(),
     createdAt: z.date(),
-    item: z.unknown().optional().nullable()
+    item: z.unknown().optional().nullable(),
+    user: z.unknown()
 }).strict();
 
 export type DefectInputType = z.infer<typeof DefectInputSchema>;
