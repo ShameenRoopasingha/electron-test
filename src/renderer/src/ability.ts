@@ -1,10 +1,10 @@
 import { AbilityBuilder, createMongoAbility, MongoAbility, CreateAbility } from '@casl/ability'
 
 // Actions: What users can do
-type Actions = 'manage' | 'create' | 'read' | 'update' | 'delete'
+export type Actions = 'manage' | 'create' | 'read' | 'update' | 'delete'
 
 // Subjects: What resources (map to your routes/models)
-type Subjects =
+export type Subjects =
   | 'all' // Everything
   | 'Sales' // /sales, bills, checkouts, returns
   | 'Item' // /items, inventory, restocks, defects, expirations
@@ -35,7 +35,6 @@ export const defineAbilityFor = (role: string | undefined): AppAbility => {
     case 'admin':
       can('manage', 'all') // Almost full access
       cannot('delete', 'Business') // Can't delete business details
-      cannot('manage', 'User', { role: { $eq: 'owner' } }) // Can't touch owner accounts (condition example)
       break
 
     case 'cashier':
@@ -50,7 +49,6 @@ export const defineAbilityFor = (role: string | undefined): AppAbility => {
       can('create', 'Sales') // Build carts/quotes but no final checkout
       cannot('manage', ['Supplier', 'User', 'Report', 'Business']) // Very limited
       cannot('update', 'Item') // No inventory changes
-      cannot('create', 'Bill') // Can't process payments
       break
 
     default:

@@ -19,7 +19,7 @@ function createWindow(): void {
     mainWindow.show()
   })
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
+  mainWindow.webContents.setWindowOpenHandler((details: { url: string }) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })

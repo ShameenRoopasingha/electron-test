@@ -1,6 +1,7 @@
 import { Navigate } from 'react-router-dom'
 import { Can } from '../context/AbilityContext'
-import { ReactNode } from 'react'
+import { ReactNode, JSX } from 'react'
+import type { Actions, Subjects } from '../ability'
 
 interface RequireAbilityProps {
   action?: Actions // Default: 'read'
@@ -14,7 +15,7 @@ export const RequireAbility = ({
   subject,
   children,
   fallbackPath = '/sales'
-}: RequireAbilityProps) => {
+}: RequireAbilityProps): JSX.Element => {
   return (
     <Can I={action} a={subject} passThrough>
       {(allowed) => (allowed ? children : <Navigate to={fallbackPath} replace />)}

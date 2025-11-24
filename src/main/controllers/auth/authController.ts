@@ -25,3 +25,5 @@ export function setupAuthHandlers(): void {
     }
   })
 }
+
+setupAuthHandlers()
