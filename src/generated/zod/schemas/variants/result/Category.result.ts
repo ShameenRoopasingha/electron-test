@@ -1,4 +1,4 @@
-import * as z from 'zod'
+import * as z from 'zod';
 // prettier-ignore
 export const CategoryResultSchema = z.object({
     id: z.number().int(),
@@ -7,4 +7,4 @@ export const CategoryResultSchema = z.object({
     items: z.array(z.unknown())
 }).strict();
 
-export type CategoryResultType = z.infer<typeof CategoryResultSchema>
+export type CategoryResultType = z.infer<typeof CategoryResultSchema>;

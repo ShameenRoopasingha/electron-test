@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import tailwind from '@tailwindcss/vite';
 export default defineConfig({
     main: {
-        plugins: [externalizeDepsPlugin()]
+        plugins: []
     },
     preload: {
         plugins: [externalizeDepsPlugin()]

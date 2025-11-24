@@ -1,4 +1,4 @@
-import * as z from 'zod'
+import * as z from 'zod';
 // prettier-ignore
 export const BillResultSchema = z.object({
     id: z.number().int(),
@@ -15,4 +15,4 @@ export const BillResultSchema = z.object({
     returnedOrders: z.array(z.unknown())
 }).strict();
 
-export type BillResultType = z.infer<typeof BillResultSchema>
+export type BillResultType = z.infer<typeof BillResultSchema>;

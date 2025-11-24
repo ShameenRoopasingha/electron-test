@@ -29,6 +29,7 @@
     "@impelsysinc/react-rbac": "^0.1.5",
     "@libsql/client": "^0.15.15",
     "@prisma/client": "^7.0.0",
+    "@prisma/client-runtime-utils": "^7.0.0",
     "@radix-ui/themes": "^3.2.1",
     "@reduxjs/toolkit": "^2.9.0",
     "axios": "^1.13.2",
