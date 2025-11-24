@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { LoginInput } from '../main/services/authService'
+import { LoginInput } from '../../../services/authService'
 
 // -----------------------------------
 // Define your custom API bridges here

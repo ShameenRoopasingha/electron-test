@@ -2,7 +2,7 @@ import { getPrisma } from '../../../lib/utils'
 import z from 'zod'
 import bcrypt from 'bcrypt'
 import { validate } from '../../../lib/validate'
-import { UserInputSchema, UserResultSchema } from 'generated/zod/schemas'
+import { UserInputSchema, UserResultSchema } from '../../generated/zod/schemas'
 
 const prisma = getPrisma()
 
@@ -16,8 +16,7 @@ export const BaseUserInput = UserInputSchema.pick({
   lname: true,
   phone: true,
   address: true,
-  bank_account:true
-
+  bank_account: true
 })
 export type BaseUserInputType = z.infer<typeof BaseUserInput>
 

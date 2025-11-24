@@ -3,7 +3,7 @@ import {
   createBusinessDetails,
   getBusinessDetailsById,
   updateBusinessDetails
-} from 'main/services/businessdetailsService'
+} from '../../services/businessdetailsService'
 
 ipcMain.handle('businessDetails:create', async (_event, data) => {
   return await createBusinessDetails(data)

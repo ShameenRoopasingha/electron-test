@@ -1,6 +1,9 @@
 import { validate } from '../../../lib/validate'
 import { getPrisma } from '../../../lib/utils'
-import { ReturnedOrderInputSchema, ReturnedOrderResultSchema } from '../../generated/zod/schemas' // Adjusted path
+import {
+  ReturnedOrderInputSchema,
+  ReturnedOrderResultSchema
+} from '../../generated/zod/schemas' // Adjusted path
 import { z } from 'zod'
 const prisma = getPrisma()
 export const BaseReturnedOrderInput = ReturnedOrderInputSchema.omit({

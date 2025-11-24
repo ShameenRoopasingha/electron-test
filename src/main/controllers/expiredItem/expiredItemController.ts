@@ -5,7 +5,7 @@ import {
   getAllExpiredItems,
   getExpiredItemById,
   updateExpiredItem
-} from 'main/services/expiredItemService'
+} from '../../services/expiredItemService'
 
 ipcMain.handle('expiredItem:create', async (_event, data) => {
   return await createExpiredItem(data)

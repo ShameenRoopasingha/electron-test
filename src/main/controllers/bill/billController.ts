@@ -6,7 +6,7 @@ import {
   updateBill,
   getAllBills,
   getBillById
-} from 'main/services/billService'
+} from '../../services/billService'
 
 ipcMain.handle('bill:create', async (_event, data) => {
   return await createBill(data)

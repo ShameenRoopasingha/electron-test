@@ -5,7 +5,7 @@ import {
   getAllRestockItems,
   getRestockItemById,
   updateRestockItem
-} from 'main/services/restockItemService'
+} from '../../services/restockItemService'
 
 ipcMain.handle('restockItem:create', async (_event, data) => {
   return await createRestockItem(data)

@@ -5,7 +5,7 @@ import {
   getAllUserSessions,
   getUserSessionById,
   updateUserSession
-} from 'main/services/userSessionService'
+} from '../../services/userSessionService'
 
 ipcMain.handle('userSession:create', async (_event, data) => {
   return await createUserSession(data)

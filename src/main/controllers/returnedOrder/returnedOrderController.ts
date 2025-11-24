@@ -5,7 +5,7 @@ import {
   getAllReturnedOrders,
   getReturnedOrderById,
   updateReturnedOrder
-} from 'main/services/returnedOrderService'
+} from '../../services/returnedOrderService'
 
 ipcMain.handle('returnedOrder:create', async (_event, data) => {
   return await createReturnedOrder(data)

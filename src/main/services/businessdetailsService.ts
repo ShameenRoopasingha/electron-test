@@ -1,4 +1,7 @@
-import { BusinessDetailsInputSchema, BusinessDetailsResultSchema } from 'generated/zod/schemas'
+import {
+  BusinessDetailsInputSchema,
+  BusinessDetailsResultSchema
+} from '../../generated/zod/schemas'
 import { getPrisma } from '../../../lib/utils'
 import z from 'zod'
 import { validate } from '../../../lib/validate'

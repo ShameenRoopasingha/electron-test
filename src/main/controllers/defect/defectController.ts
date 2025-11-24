@@ -5,7 +5,7 @@ import {
   getAllDefects,
   getDefectById,
   updateDefect
-} from 'main/services/defectService'
+} from '../../services/defectService'
 
 ipcMain.handle('defect:create', async (_event, data) => {
   return await createDefect(data)
@@ -27,4 +27,3 @@ ipcMain.handle('defect:delete', async (_event, id: number) => {
   await deleteDefect(id)
   return true
 })
-

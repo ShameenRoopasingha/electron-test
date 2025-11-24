@@ -6,7 +6,7 @@ import {
   getAllSuppliers,
   getSupplierById,
   updateSupplier
-} from 'main/services/supplierService'
+} from '../../services/supplierService'
 
 ipcMain.handle('supplier:create', async (_event, data) => {
   return await createSupplier(data)

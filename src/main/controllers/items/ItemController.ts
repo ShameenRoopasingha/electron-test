@@ -5,7 +5,7 @@ import {
   getAllItems,
   getItemById,
   updateItem
-} from 'main/services/itemService'
+} from '../../services/itemService'
 
 ipcMain.handle('item:create', async (_event, data) => {
   return await createItem(data)

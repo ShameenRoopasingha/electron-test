@@ -5,7 +5,7 @@ import {
   getAllCategories,
   getCategoryById,
   updateCategory
-} from 'main/services/categoryService'
+} from '../../services/categoryService'
 
 ipcMain.handle('category:create', async (_event, data) => {
   return await createCategory(data)

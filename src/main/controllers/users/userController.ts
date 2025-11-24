@@ -6,7 +6,7 @@ import {
   updateUser,
   getAllUser,
   getUserById
-} from 'main/services/userService'
+} from '../../services/userService'
 
 ipcMain.handle('user:create', async (_event, data) => {
   return await createUser(data)

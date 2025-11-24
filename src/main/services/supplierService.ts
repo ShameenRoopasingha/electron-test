@@ -27,7 +27,7 @@ export type BaseSupplierResultType = z.infer<typeof BaseSupplierResult>
 export const createSupplier = async (
   data: BaseSupplierInputType
 ): Promise<BaseSupplierResultType> => {
-  const validatedData = validate(BaseSupplierInput,data)
+  const validatedData = validate(BaseSupplierInput, data)
   const supplier = await prisma.supplier.create({
     data: {
       name: validatedData.name,
