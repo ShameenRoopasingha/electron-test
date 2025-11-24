@@ -22,15 +22,9 @@ export const BaseBillResult = BillResultSchema.omit({
 })
 export type BaseBillResultType = z.infer<typeof BaseBillResult>
 export const createBill = async (data: BaseBillInputType): Promise<BaseBillResultType> => {
-  const validatedData = validate(BaseBillInput,data);
+  const validatedData = validate(BaseBillInput, data)
   const bill = await prisma.bill.create({
-    data: {
-      userId: validatedData.userId,
-      customerId: validatedData.customerId,
-      totalAmount: validatedData.totalAmount,
-      paymentMethod: validatedData.paymentMethod,
-      paymentStatus: validatedData.paymentStatus
-    }
+    data: { ...validatedData }
   })
   return BaseBillResult.parse(bill)
 }

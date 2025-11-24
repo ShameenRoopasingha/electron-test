@@ -12,6 +12,8 @@ ipcMain.handle('auth:login', async (_event, data: LoginInput) => {
 ipcMain.handle('auth:OwnerRegister', async (_event, data: LoginInput) => {
   try {
     return await loginUser(data)
+  } catch (error: unknown) {
+    throw new Error((error as Error).message || 'Authentication failed')
   }
 })
 ipcMain.handle('auth:verifyToken', async (_event, token: string): Promise<TokenPayload> => {

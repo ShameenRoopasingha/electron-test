@@ -1,4 +1,4 @@
-import * as z from 'zod';
+import * as z from 'zod'
 // prettier-ignore
 export const BusinessDetailsResultSchema = z.object({
     id: z.number().int(),
@@ -14,4 +14,4 @@ export const BusinessDetailsResultSchema = z.object({
     owner: z.unknown()
 }).strict();
 
-export type BusinessDetailsResultType = z.infer<typeof BusinessDetailsResultSchema>;
+export type BusinessDetailsResultType = z.infer<typeof BusinessDetailsResultSchema>

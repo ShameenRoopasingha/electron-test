@@ -1,29 +1,23 @@
 import { getPrisma } from '../../../lib/utils'
-import {
-  UserCreateInput,
-  UserUpdateInput,
-  UserWhereUniqueInput,
-  UserWhereInput,
-  UserOrderByWithRelationInput,
-  UserSelect,
-  UserInclude,
-  UserInclude
-} from 'generated/prisma/models'
-
 import z from 'zod'
 import bcrypt from 'bcrypt'
 import { validate } from '../../../lib/validate'
+import { UserInputSchema, UserResultSchema } from 'generated/zod/schemas'
 
 const prisma = getPrisma()
 
 // ✅ Base schemas (omit auto-managed and relational fields)
-export const BaseUserInput = UserCreateInput.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-  bills: true,
-  sessions: true,
-  expiredItems: true
+export const BaseUserInput = UserInputSchema.pick({
+  username: true,
+  email: true,
+  password: true,
+  role: true,
+  fname: true,
+  lname: true,
+  phone: true,
+  address: true,
+  bank_account:true
+
 })
 export type BaseUserInputType = z.infer<typeof BaseUserInput>
 
@@ -33,7 +27,9 @@ export const BaseUserResult = UserResultSchema.omit({
   updatedAt: true,
   sessions: true,
   expiredItems: true,
-  bills: true
+  bills: true,
+  defects: true,
+  business: true
 })
 export type BaseUserResultType = z.infer<typeof BaseUserResult>
 
