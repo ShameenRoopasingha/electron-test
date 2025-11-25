@@ -11,8 +11,6 @@ import profile from '../assets/icons/user (1).png'
 import { useAppDispatch, useAppSelector } from '@renderer/redux/hooks'
 import { setPage } from '@renderer/redux/slices/pageSlice'
 import { useNavigate } from 'react-router-dom'
-import { useAbility } from '../context/AbilityContext'
-import type { Subjects } from '../ability'
 
 interface SidebarProps {
   active?: string
@@ -28,18 +26,15 @@ const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
   const active = propActive || currentPage
 
   // Menu items config (reusable)
-  const allMenuItems: { key: string; label: string; icon: string; path: string; subject: Subjects }[] = [
-    { key: 'SALES', label: 'SALES', icon: sale, path: '/sales', subject: 'Sales' },
-    { key: 'ITEMS', label: 'ITEMS', icon: items, path: '/items', subject: 'Item' },
-    { key: 'DASHBOARD', label: 'DASHBOARD', icon: dahboard, path: '/dashboard', subject: 'Dashboard' },
-    { key: 'CUSTOMERS', label: 'CUSTOMERS', icon: customers, path: '/customers', subject: 'Customer' },
-    { key: 'USERS', label: 'USERS', icon: users, path: '/users', subject: 'User' },
-    { key: 'SUPPLIERS', label: 'SUPPLIERS', icon: suppliers, path: '/suppliers', subject: 'Supplier' },
-    { key: 'REPORTS', label: 'REPORTS', icon: reports, path: '/reports', subject: 'Report' }
+  const menuItems: { key: string; label: string; icon: string; path: string }[] = [
+    { key: 'SALES', label: 'SALES', icon: sale, path: '/sales' },
+    { key: 'ITEMS', label: 'ITEMS', icon: items, path: '/items' },
+    { key: 'DASHBOARD', label: 'DASHBOARD', icon: dahboard, path: '/dashboard' },
+    { key: 'CUSTOMERS', label: 'CUSTOMERS', icon: customers, path: '/customers' },
+    { key: 'USERS', label: 'USERS', icon: users, path: '/users' },
+    { key: 'SUPPLIERS', label: 'SUPPLIERS', icon: suppliers, path: '/suppliers' },
+    { key: 'REPORTS', label: 'REPORTS', icon: reports, path: '/reports' }
   ]
-
-  const ability = useAbility()
-  const menuItems = allMenuItems.filter(item => ability.can('read', item.subject))
 
   return (
     <aside className="h-[100vh] w-80  bg-[#161616]  text-white flex flex-col justify-between border-solid border-none  items-center rounded-r-2xl">

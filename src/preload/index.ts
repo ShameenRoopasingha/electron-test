@@ -3,6 +3,20 @@ import { electronAPI } from '@electron-toolkit/preload'
 import { LoginInput } from '../main/services/authService'
 import { Prisma } from '../generated/prisma/client'
 
+// Helper function to get auth token
+const getAuthToken = (): string | null => {
+  return localStorage.getItem('authToken')
+}
+
+// Helper function to make authenticated IPC calls
+const authenticatedInvoke = (channel: string, ...args: unknown[]): Promise<unknown> => {
+  const token = getAuthToken()
+  if (!token) {
+    throw new Error('No authentication token found. Please log in.')
+  }
+  return ipcRenderer.invoke(channel, token, ...args)
+}
+
 // -----------------------------------
 // Define your custom API bridges here
 // -----------------------------------
@@ -17,11 +31,11 @@ const api = {
   },
   // Users
   user: {
-    create: (data: Prisma.UserCreateInput) => ipcRenderer.invoke('user:create', data),
-    getAll: () => ipcRenderer.invoke('user:getAll'),
-    getById: (id: string) => ipcRenderer.invoke('user:getById', id),
-    update: (id: string, data: Prisma.UserUpdateInput) => ipcRenderer.invoke('user:update', id, data),
-    delete: (id: string) => ipcRenderer.invoke('user:delete', id)
+    create: (data: Prisma.UserCreateInput) => authenticatedInvoke('user:create', data),
+    getAll: () => authenticatedInvoke('user:getAll'),
+    getById: (id: string) => authenticatedInvoke('user:getById', id),
+    update: (id: string, data: Prisma.UserUpdateInput) => authenticatedInvoke('user:update', id, data),
+    delete: (id: string) => authenticatedInvoke('user:delete', id)
   },
   // User Sessions
   userSession: {

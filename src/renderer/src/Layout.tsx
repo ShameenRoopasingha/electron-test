@@ -13,7 +13,7 @@ const Layout: FC<LayoutProps> = ({ children, classNames }) => {
   const [active, setActive] = useState('SALES')
 
   return (
-    <div className="flex w-screen h-screen bg-black overflow-hidden">
+    <div className="flex w-screen h-screen bg-[#000] overflow-hidden">
       {/* Sidebar */}
       <Navbar active={active} onSelect={setActive} />
 
@@ -29,7 +29,7 @@ const Layout: FC<LayoutProps> = ({ children, classNames }) => {
           </SearchBox>
 
           <Container
-            classNames=" p-5 h- fit w-full flex-14
+            classNames=" p-5 h-fit w-full flex-14
       "
           >
             {children}
