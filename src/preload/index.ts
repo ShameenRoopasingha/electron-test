@@ -26,7 +26,7 @@ const api = {
   // Auth
   auth: {
     login: (input: LoginInput) => ipcRenderer.invoke('auth:login', input),
-    ownerRegister: (input: LoginInput) => ipcRenderer.invoke('auth:OwnerRegister', input),
+    ownerRegister: (input: LoginInput) => ipcRenderer.invoke('auth:ownerRegister', input),
     verifyToken: (token: string) => ipcRenderer.invoke('auth:verifyToken', token)
   },
   // Users
@@ -150,12 +150,6 @@ if (process.contextIsolated) {
   try {
     contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
-    contextBridge.exposeInMainWorld('api', {
-      auth: {
-        login: (input: LoginInput) => ipcRenderer.invoke('auth:login', input),
-        verifyToken: (token: string) => ipcRenderer.invoke('auth:verifyToken', token)
-      }
-    })
   } catch (error) {
     console.error(error)
   }

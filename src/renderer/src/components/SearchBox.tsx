@@ -38,7 +38,7 @@ const SearchBox: FC<SearchBoxProps1> = ({ classNames, children }) => {
       flex-wrap md:flex-nowrap transition-all duration-500`}
     >
       {/* Left: Active */}
-      <h1 className="text-white font-extrabold text-3xl flex-shrink-0 px-2 w-1/4">{children}</h1>
+      <h3 className="text-white  text-3xl flex-shrink-0 px-2 w-1/4">{children}</h3>
 
       {/* Center: Search */}
       <div className="flex justify-center items-center md:max-w-1/2 flex-1 order-3 md:order-2">

@@ -1,119 +1,113 @@
 @tailwind utilities;
 
-@layer base {
-  /* Font Family */
-  body {
-    font-family: 'Poppins', sans-serif;
-  }
-
+@layer utilities {
   /* Display */
-  h1.display-lg {
-    font-size: 43.67px;
-    font-weight: 800;
-    line-height: 1.55;
-    letter-spacing: 0.015em;
+  .display-lg {
+    font-size: var(--display-lg-size);
+    font-weight: var(--display-lg-weight);
+    line-height: var(--display-lg-line-height);
+    letter-spacing: var(--display-lg-letter-spacing);
   }
 
-  h2.display-md {
-    font-size: 39.06px;
-    font-weight: 800;
-    line-height: 1.55;
-    letter-spacing: 0.015em;
+  .display-md {
+    font-size: var(--display-md-size);
+    font-weight: var(--display-md-weight);
+    line-height: var(--display-md-line-height);
+    letter-spacing: var(--display-md-letter-spacing);
   }
 
   /* Headings */
-  h1 {
-    font-size: 34.94px;
-    font-weight: 700;
-    line-height: 1.55;
-    letter-spacing: 0.015em;
+  .h1 {
+    font-size: var(--h1-size);
+    font-weight: var(--h1-weight);
+    line-height: var(--h1-line-height);
+    letter-spacing: var(--h1-letter-spacing);
   }
 
-  h2 {
-    font-size: 31.25px;
-    font-weight: 600;
-    line-height: 1.55;
-    letter-spacing: 0.02em;
+  .h2 {
+    font-size: var(--h2-size);
+    font-weight: var(--h2-weight);
+    line-height: var(--h2-line-height);
+    letter-spacing: var(--h2-letter-spacing);
   }
 
-  h3 {
-    font-size: 27.95px;
-    font-weight: 600;
-    line-height: 1.55;
-    letter-spacing: 0.02em;
+  .h3 {
+    font-size: var(--h3-size);
+    font-weight: var(--h3-weight);
+    line-height: var(--h3-line-height);
+    letter-spacing: var(--h3-letter-spacing);
   }
 
-  h4 {
-    font-size: 25px;
-    font-weight: 500;
-    line-height: 1.55;
-    letter-spacing: 0.02em;
+  .h4 {
+    font-size: var(--h4-size);
+    font-weight: var(--h4-weight);
+    line-height: var(--h4-line-height);
+    letter-spacing: var(--h4-letter-spacing);
   }
 
-  h5 {
-    font-size: 22.36px;
-    font-weight: 500;
-    line-height: 1.6;
-    letter-spacing: 0.025em;
+  .h5 {
+    font-size: var(--h5-size);
+    font-weight: var(--h5-weight);
+    line-height: var(--h5-line-height);
+    letter-spacing: var(--h5-letter-spacing);
   }
 
-  h6 {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.6;
-    letter-spacing: 0.025em;
+  .h6 {
+    font-size: var(--h6-size);
+    font-weight: var(--h6-weight);
+    line-height: var(--h6-line-height);
+    letter-spacing: var(--h6-letter-spacing);
   }
 
-  /* Body Text */
-  p.body-xl {
-    font-size: 17.89px;
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.03em;
+  /* Body */
+  .body-xl {
+    font-size: var(--body-xl-size);
+    font-weight: var(--body-xl-weight);
+    line-height: var(--body-xl-line-height);
+    letter-spacing: var(--body-xl-letter-spacing);
   }
 
-  p {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.6;
-    letter-spacing: 0.03em;
+  .body {
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line-height);
+    letter-spacing: var(--body-letter-spacing);
   }
 
-  p.body-sm {
-    font-size: 14.31px;
-    font-weight: 400;
-    line-height: 1.65;
-    letter-spacing: 0.03em;
+  .body-sm {
+    font-size: var(--body-sm-size);
+    font-weight: var(--body-sm-weight);
+    line-height: var(--body-sm-line-height);
+    letter-spacing: var(--body-sm-letter-spacing);
   }
 
   /* Captions */
   .caption-lg {
-    font-size: 12.8px;
-    font-weight: 400;
-    line-height: 1.65;
-    letter-spacing: 0.03em;
+    font-size: var(--caption-lg-size);
+    font-weight: var(--caption-lg-weight);
+    line-height: var(--caption-lg-line-height);
+    letter-spacing: var(--caption-lg-letter-spacing);
   }
 
   .caption {
-    font-size: 11.45px;
-    font-weight: 400;
-    line-height: 1.65;
-    letter-spacing: 0.03em;
+    font-size: var(--caption-size);
+    font-weight: var(--caption-weight);
+    line-height: var(--caption-line-height);
+    letter-spacing: var(--caption-letter-spacing);
   }
 
   .caption-sm {
-    font-size: 10.24px;
-    font-weight: 300;
-    line-height: 1.65;
-    letter-spacing: 0.03em;
+    font-size: var(--caption-sm-size);
+    font-weight: var(--caption-sm-weight);
+    line-height: var(--caption-sm-line-height);
+    letter-spacing: var(--caption-sm-letter-spacing);
   }
 
   /* Overline */
   .overline {
-    font-size: 9.16px;
-    font-weight: 500;
-    line-height: 1.65;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    font-size: var(--overline-size);
+    font-weight: var(--overline-weight);
+    line-height: var(--overline-line-height);
+    letter-spacing: var(--overline-letter-spacing);
   }
 }

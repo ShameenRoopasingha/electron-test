@@ -53,10 +53,14 @@ function App(): ReactElement {
   const RoleSwitcher = (): ReactElement => {
     // Mock tokens for different roles (in real app, these would come from login)
     const mockTokens: Record<string, string> = {
-      owner: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im93bmVyIiwiaWF0IjoxNjQwMDAwMDAwLCJleHAiOjE2NzAwMDAwMDB9.mock_signature',
-      admin: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQwMDAwMDAwLCJleHAiOjE2NzAwMDAwMDB9.mock_signature',
-      cashier: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImNhc2hpZXIiLCJpYXQiOjE2NDAwMDAwMDAsImV4cCI6MTY3MDAwMDAwfQ.mock_signature',
-      seller: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InNlbGxlciIsImlhdCI6MTY0MDAwMDAwMCwiZXhwIjoxNjcwMDAwMDB9.mock_signature'
+      owner:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im93bmVyIiwiaWF0IjoxNjQwMDAwMDAwLCJleHAiOjE2NzAwMDAwMDB9.mock_signature',
+      admin:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjQwMDAwMDAwLCJleHAiOjE2NzAwMDAwMDB9.mock_signature',
+      cashier:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImNhc2hpZXIiLCJpYXQiOjE2NDAwMDAwMDAsImV4cCI6MTY3MDAwMDAwfQ.mock_signature',
+      seller:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InNlbGxlciIsImlhdCI6MTY0MDAwMDAwMCwiZXhwIjoxNjcwMDAwMDB9.mock_signature'
     }
 
     return (
@@ -102,7 +106,7 @@ function App(): ReactElement {
         <Layout>
           <RoutesWrapper />
         </Layout>
-        {import.meta.env.DEV && <RoleSwitcher />}
+        {/* {import.meta.env.DEV && <RoleSwitcher />} */}
       </HashRouter>
     </AbilityContext.Provider>
   )

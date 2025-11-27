@@ -11,8 +11,11 @@ let prisma: PrismaClient
 
 export function getPrisma(): PrismaClient {
   if (!prisma) {
-    const adapter = new PrismaBetterSqlite3({ url: 'file:./prisma/dev.db' })
+    const dbUrl = process.env.DATABASE_URL || 'file:./prisma/dev.db'
+    console.log('Initializing Prisma with URL:', dbUrl)
+    const adapter = new PrismaBetterSqlite3({ url: dbUrl })
     prisma = new PrismaClient({ adapter })
+    console.log('Prisma client initialized successfully')
   }
   return prisma
 }

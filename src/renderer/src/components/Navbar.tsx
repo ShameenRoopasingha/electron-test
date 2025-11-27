@@ -42,11 +42,11 @@ const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
       <div className="w-full ">
         {/* Pharmacy Name */}
         <div className="p-4 border-b border-gray-800 h-1/12">
-          <h1 className="text-lg text-center font-bold leading-tight">Nexus POS & IMS</h1>
+          <h5 className="text-lg text-center font-bold leading-tight">Nexus POS & IMS</h5>
         </div>
 
         {/* User */}
-        <div className="flex flex-col flex-1 items-center py-6 border-b border-gray-800 3/12">
+        <div className="flex flex-col flex-1 items-center py-6 border-b border-gray-800 h-3/12">
           <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center text-2xl">
             <img src={profile} alt="" />
           </div>
@@ -55,29 +55,29 @@ const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
         </div>
 
         {/* Menu */}
-        <nav className="flex flex-col gap-2 mt-4  px-2 h-fit justify-between h-7/12">
+        <nav className="flex flex-col gap-2 mt-4  px-2 h-1/2">
           {menuItems.map((item) => {
             const isActive = active === item.key
             return (
-              <div key={item.key} className="h-1/7">
+              <div key={item.key}>
                 <button
                   onClick={() => {
                     onSelect && onSelect(item.key)
                     dispatch(setPage(item.label))
                     navigate(item.path)
                   }}
-                  className={`group flex justify-between items-center gap-2 w-full px-3 py-3 rounded-lg text-sm font-semibold transition text-gray-400 focus:bg-[#0c0c0c] focus:text-white hover:bg-[#383838] hover:text-white
-                  ${isActive ? 'bg-[#0c0c0c] text-white' : 'bg-transparent'}
+                  className={`group flex justify-between items-center gap-2 w-full px-3 py-3 rounded-lg text-sm font-semibold transition text-gray-400 focus:bg-white focus:text-white hover:bg-[#383838] hover:text-white
+                  ${isActive ? 'bg-white text-[#0c0c0c]' : 'bg-transparent'}
                     `}
                 >
                   <div
-                    className={`size-fit  rounded-md flex justify-center items-center bg-[#161616] text-gray-400  group-focus:bg-white group-focus:text-white ${isActive ? 'bg-white text-white' : ''}`}
+                    className={`w-fit  rounded-md flex justify-center items-center bg-[#161616] text-gray-400  group-focus:bg-[#0c0c0c] group-focus:text-[#0c0c0c] ${isActive ? 'bg-[#0c0c0c] text-[#0c0c0c]' : ''}`}
                   >
                     <span className="p-2 ">
-                      <img className="`${isActive ? '' : ''} size-8 `" src={item.icon} alt="" />
+                      <img className="size-8" src={item.icon} alt="" />
                     </span>
                   </div>
-                  <h6 className={`${isActive ? 'text-white' : 'text-[#777777]'} font-semibold`}>
+                  <h6 className={`${isActive ? 'text-[#0c0c0c]' : 'text-gray-400'} font-semibold`}>
                     {item.label}
                   </h6>
                 </button>
@@ -88,7 +88,7 @@ const Navbar: FC<SidebarProps> = ({ active: propActive, onSelect }) => {
       </div>
 
       {/* Footer Logo */}
-      <div className="mt-6  border-t border-gray-800 text-center text-sm opacity-60 w-[225px] h-2/12 content-center items-center justify-center flex">
+      <div className="mt-6  border-t border-gray-800 text-center text-sm opacity-60 w-[225px] h-2/12 items-center justify-center flex">
         <img src={logo} alt="logo" className="size-20 brightness-100" />
       </div>
     </aside>
