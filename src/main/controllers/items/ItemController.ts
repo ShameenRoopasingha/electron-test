@@ -18,9 +18,13 @@ ipcMain.handle('item:create', async (_event, data: BaseItemInputType) => {
 
 ipcMain.handle('item:getAll', async () => {
   try {
-    return await getAllItems()
+    const data = await getAllItems()
+    return { success: true, data }
   } catch (error: unknown) {
-    throw new Error((error as Error).message || 'Failed to fetch items')
+    return {
+      success: false,
+      message: (error as Error).message || 'Failed to fetch items'
+    }
   }
 })
 

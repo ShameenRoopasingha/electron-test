@@ -13,12 +13,11 @@ export default defineConfig({
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '@': resolve('./@'),
+        '@renderer': resolve('src/renderer/src'),
+        components: resolve('./@/components')
       }
     },
-    plugins: [
-      react(),
-      tailwind(),
-    ]
+    plugins: [react(), tailwind()]
   }
 })

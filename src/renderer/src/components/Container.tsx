@@ -6,9 +6,11 @@ interface ContainerProps {
 }
 
 const Container: FC<ContainerProps> = ({ classNames, children }) => {
+  const fullClassName = `${classNames} text-white rounded-2xl  align-middle content-center justify-center items-center p-2`;
+  console.log('Container className:', fullClassName);
   return (
     <div
-      className={`${classNames}text-white rounded-2xl bg-[#111111] align-middle content-center justify-center items-center p-2`} // ✅ properly using props
+      className={fullClassName} // ✅ properly using props
     >
       {' '}
       {/* ✅ conditionally render icon if provided */}

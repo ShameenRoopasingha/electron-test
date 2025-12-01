@@ -1,7 +1,8 @@
-import dotenv from 'dotenv'
-dotenv.config()
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config()
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({

@@ -60,8 +60,17 @@ export const getItemById = async (id: number): Promise<BaseItemResultType> => {
 
 export const getAllItems = async (): Promise<BaseItemResultType[]> => {
   const items = await prisma.item.findMany()
-  return items.map((item) => BaseItemResult.parse(item))
-}
+
+  const parsedItems = items.map((i) => {
+    const parsed = BaseItemResult.safeParse(i)
+    if (!parsed.success) {
+      console.error('Invalid Item', z.treeifyError(parsed.error))
+      throw new Error('Invalid item format from database')
+    }
+    return parsed.data
+  })
+  return parsedItems
+};
 
 export const updateItem = async (
   id: number,

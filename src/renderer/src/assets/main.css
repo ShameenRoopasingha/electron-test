@@ -176,7 +176,6 @@ code {
   display: inline-block;
   text-align: center;
   white-space: nowrap;
-  border-radius: 10px;
   line-height: 38px;
   font-size: 14px;
   border-color: var(--ev-button-alt-border);
@@ -184,7 +183,7 @@ code {
   text-align: center;
   position: relative;
   font-weight: bold;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   align-content: center;
   justify-items: center;
@@ -204,7 +203,7 @@ code {
 
 .success {
   background: linear-gradient(45deg, #2cb743 0%, #259638 100%);
-  color: #505050;
+  color: #000;
   box-shadow:
     2px 2px 4px rgba(0, 0, 0, 0.55),
     -2px -2px 4px rgba(255, 255, 255, 0.05);
@@ -242,6 +241,26 @@ code {
     -2px -2px 4px rgba(255, 255, 255, 0.03);
 }
 
+.btn.default-black img.icon {
+  filter: invert(1);
+
+}
+
+.btn.default-black {
+  color: white;
+}
+
+.btn.default img.icon {
+  filter: invert(0);
+
+}
+
+.btn.default {
+  color: black;
+}
+[icon*='add'] {
+
+}
 .display-lg {
   font-size: var(--display-lg-size);
   font-weight: var(--display-lg-weight);
