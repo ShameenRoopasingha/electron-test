@@ -195,28 +195,51 @@ code {
   font-size: 18px;
 }
 .primary {
-  background: #2c89b7;
-  background: linear-gradient(45deg, rgba(44, 137, 183, 1) 0%, rgba(37, 112, 150, 1) 100%);
+  background: linear-gradient(45deg, #2c89b7 0%, #257096 100%);
+  color: #3a3a3a;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .success {
-  background: #2cb743;
-  background: linear-gradient(45deg, rgba(44, 183, 67, 1) 0%, rgba(37, 150, 56, 1) 100%);
+  background: linear-gradient(45deg, #2cb743 0%, #259638 100%);
+  color: #505050;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .warning {
-  background: #e6c229;
-  background: linear-gradient(45deg, rgba(230, 194, 41, 1) 0%, rgba(196, 161, 34, 1) 100%);
+  background: linear-gradient(45deg, #e6c229 0%, #c4a122 100%);
+  color: #3a3a3a;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .danger {
-  background: #b72c2c;
-  background: linear-gradient(45deg, rgba(183, 44, 44, 1) 0%, rgba(150, 37, 37, 1) 100%);
+  background: linear-gradient(45deg, #b72c2c 0%, #962525 100%);
+  color: #3a3a3a;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .default {
-  background: #ffffff;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 1) 0%, rgba(204, 204, 204, 1) 100%);
+  background: linear-gradient(45deg, #ffffff 0%, #cccccc 100%);
+  color: #3a3a3a;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.55),
+    -2px -2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.default-black {
+  background: linear-gradient(45deg, #161616 0%, #000000 100%);
+  color: #3a3a3a;
+  box-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.7),
+    -2px -2px 4px rgba(255, 255, 255, 0.03);
 }
 
 .display-lg {
